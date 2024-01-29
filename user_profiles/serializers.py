@@ -3,6 +3,7 @@ from .models import UserProfile
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
+    " Converts UserProfile model data to JSON "
     user = serializers.ReadOnlyField(source='user.username')
     is_owner = serializers.SerializerMethodField()
 
