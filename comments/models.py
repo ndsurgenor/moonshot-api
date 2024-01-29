@@ -5,7 +5,7 @@ from photos.models import Photo
 
 class Comment(models.Model):
     """
-    Creates a comment model instance connected to a specific photo and user
+    Comment model associated with a specific photo and user
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     photo = models.ForeignKey(Photo, on_delete=models.CASCADE)
