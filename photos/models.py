@@ -10,7 +10,9 @@ class Photo(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=127, blank=True)
-    main_feature = models.IntegerField(choices=MAIN_FEATURES)
+    main_feature = models.CharField(
+        max_length=127, choices=MAIN_FEATURES
+    )
     description = models.TextField(blank=True)
     location = models.CharField(max_length=127, blank=True)
     photo_date = models.DateField()

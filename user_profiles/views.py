@@ -27,6 +27,7 @@ class UserProfileDetail(APIView):
     serializer_class = UserProfileSerializer
     permission_classes = [IsPermittedOrReadOnly]
 
+    # Check permissions
     def get_object(self, pk):
         try:
             user_profile = UserProfile.objects.get(pk=pk)
@@ -55,4 +56,7 @@ class UserProfileDetail(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
+        )
