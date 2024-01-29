@@ -30,3 +30,10 @@ class CommentSerializer(serializers.ModelSerializer):
             'updated_at',
             'content',
         ]
+
+
+class CommentDetailSerializer(CommentSerializer):
+    """
+    Inherits from CommentSerializer and links photo as ReadOnlyField
+    """
+    photo = serializers.ReadOnlyField(source='photo.id')
