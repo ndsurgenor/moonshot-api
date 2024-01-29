@@ -82,7 +82,7 @@ class PhotoDetail(APIView):
         )
     
     # DELETE functionality
-    def put(self, request, pk):
+    def delete(self, request, pk):
         photo = self.get_object(pk)
         photo.delete()
         return Response(
