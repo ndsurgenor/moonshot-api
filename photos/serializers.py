@@ -26,7 +26,7 @@ class PhotoSerializer(serializers.ModelSerializer):
 
 
     class Meta:
-        model = UserProfile
+        model = Photo
         fields = [
             'id',
             'user',

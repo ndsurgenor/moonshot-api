@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     'user_profiles',
+    'photos',
 ]
 
 MIDDLEWARE = [

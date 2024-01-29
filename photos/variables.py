@@ -1,9 +1,9 @@
 # Defines options for main feature of photograph
 
 MAIN_FEATURES = [
-    (constellation, 'Constellation'),
-    (deep_sky, 'Deep-Sky'),
-    (moon, 'Moon'),
-    (nightscape, 'Nightscape'),
-    (planet, 'Planet'),    
+    (0, 'Constellation'),
+    (1, 'Deep-Sky'),
+    (2, 'Moon'),
+    (3, 'Nightscape'),
+    (4, 'Planet'),    
 ]

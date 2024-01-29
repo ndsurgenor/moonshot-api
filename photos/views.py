@@ -1,3 +1,19 @@
-from django.shortcuts import render
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .models import Photo
+from .serializers import PhotoSerializer
 
-# Create your views here.
+
+class PhotoList(APIView):
+    """
+    Lists all uploaded photos
+    """
+    def get(self, request):
+        photos = Photo.objects.all()
+        serializer = PhotoSerializer(
+            photos,
+            many=True,
+            context={'request': request}
+        )
+        return Response(serializer.data)
