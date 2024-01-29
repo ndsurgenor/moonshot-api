@@ -19,7 +19,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
             'created_at',
             'updated_at',
             'name',
-            'content',
+            'details',
             'avatar',
             'is_owner',
         ]

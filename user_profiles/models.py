@@ -7,7 +7,7 @@ class UserProfile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=127, blank=True)
-    content = models.TextField(blank=True)
+    details = models.TextField(blank=True)
     avatar = models.ImageField(
         upload_to='images/',
         default = '../default_avatar'
