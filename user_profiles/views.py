@@ -8,7 +8,9 @@ from moonshot_api.permissions import IsPermittedOrReadOnly
 
 
 class UserProfileList(APIView):
-    """ Lists all user profiles"""
+    """
+    Lists all user profiles
+    """
     def get(self, request):
         user_profiles = UserProfile.objects.all()
         serializer = UserProfileSerializer(
@@ -19,7 +21,9 @@ class UserProfileList(APIView):
         return Response(serializer.data)
 
 class UserProfileDetail(APIView):
-    """ Displays the details of a single profile """
+    """
+    Displays the details of a single profile
+    """
     serializer_class = UserProfileSerializer
     permission_classes = [IsPermittedOrReadOnly]
 
