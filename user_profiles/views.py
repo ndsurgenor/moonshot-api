@@ -11,7 +11,11 @@ class UserProfileList(APIView):
     """ Lists all user profiles"""
     def get(self, request):
         user_profiles = UserProfile.objects.all()
-        serializer = UserProfileSerializer(user_profiles, many=True)
+        serializer = UserProfileSerializer(
+            user_profiles, 
+            many=True,
+            context={'request': request},
+        )
         return Response(serializer.data)
 
 class UserProfileDetail(APIView):
@@ -30,13 +34,20 @@ class UserProfileDetail(APIView):
     # GET functionality
     def get(self, request, pk):
         user_profile = self.get_object(pk)
-        serializer = UserProfileSerializer(user_profile)
+        serializer = UserProfileSerializer(
+            user_profile,
+            context={'request': request},
+        )
         return Response(serializer.data)
 
     # PUT functionality
     def put(self, request, pk):
         user_profile = self.get_object(pk)
-        serializer = UserProfileSerializer(user_profile, data=request.data)
+        serializer = UserProfileSerializer(
+            user_profile,
+            data=request.data,
+            context={'request': request},
+        )
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
