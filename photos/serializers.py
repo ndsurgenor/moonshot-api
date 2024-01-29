@@ -8,8 +8,8 @@ class PhotoSerializer(serializers.ModelSerializer):
     """
     user = serializers.ReadOnlyField(source='user.username')
     is_owner = serializers.SerializerMethodField()
-    user_id = serializers.ReadOnlyField(source="user.user_profile.id")
-    user_avatar = serializers.ReadOnlyField(source="user.user_profile.avatar.url")
+    user_id = serializers.ReadOnlyField(source='user.user_profile.id')
+    user_avatar = serializers.ReadOnlyField(source='user.user_profile.avatar.url')
 
     # Ensures photo upload is less than 4MB in size
     # and height/width are between 500-7680px 
