@@ -11,24 +11,24 @@ class PhotoSerializer(serializers.ModelSerializer):
     user_id = serializers.ReadOnlyField(source="user.user_profile.id")
     user_avatar = serializers.ReadOnlyField(source="user.user_profile.avatar.url")
 
-    # Ensures photo upload is less than 2MB in size
-    # and height/width are between 500-4096px 
+    # Ensures photo upload is less than 4MB in size
+    # and height/width are between 500-7680px 
     def validate_photo(self, value):
         size = value.size
         height = value.image.height
         width = value.image.width
 
-        if size > 1024 * 1024 * 2:
+        if size > 1024 * 1024 * 4:
             raise serializers.ValidationError(
-                'Image file size must be less than 2MB'
+                'Image file size must be less than 4MB'
                 )
-        if height < 500 or height > 4096:
+        if height < 500 or height > 7680:
             raise serializers.ValidationError(
-                'Image height must be between 500-4096 pixels'
+                'Image height must be between 500-7680 pixels'
                 )
-        if width < 500 or width > 4096:
+        if width < 500 or width > 7680:
             raise serializers.ValidationError(
-                'Image width must be between 500-4096 pixels'
+                'Image width must be between 500-7680 pixels'
                 ) 
         return value
 
@@ -52,8 +52,8 @@ class PhotoSerializer(serializers.ModelSerializer):
             'main_feature',
             'description',
             'location',
-            'date_taken',
-            'time_taken',
-            'equipment',
+            'photo_date',
+            'photo_time',
+            'equipment_used',
             'image',
         ]

@@ -13,9 +13,9 @@ class Photo(models.Model):
     main_feature = models.IntegerField(choices=MAIN_FEATURES)
     description = models.TextField(blank=True)
     location = models.CharField(max_length=127, blank=True)
-    date_taken = models.DateField()
-    time_taken = models.TimeField()
-    equipment = models.TextField(blank=True)
+    photo_date = models.DateField()
+    photo_time = models.TimeField()
+    equipment_used = models.TextField(blank=True)
     image = models.ImageField(
         upload_to='images/',
         default = '../default_photo'
