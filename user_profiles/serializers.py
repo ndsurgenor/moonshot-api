@@ -8,6 +8,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
     """
     user = serializers.ReadOnlyField(source='user.username')
     is_owner = serializers.SerializerMethodField()
+    photo_upload_count = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -25,4 +26,5 @@ class UserProfileSerializer(serializers.ModelSerializer):
             'details',
             'avatar',
             'is_owner',
+            'photo_upload_count',
         ]
