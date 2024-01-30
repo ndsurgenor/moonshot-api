@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Photo
+from stars.models import Star
 
 
 class PhotoSerializer(serializers.ModelSerializer):
@@ -10,6 +11,7 @@ class PhotoSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     user_id = serializers.ReadOnlyField(source='user.user_profile.id')
     user_avatar = serializers.ReadOnlyField(source='user.user_profile.avatar.url')
+    star_id = serializers.SerializerMethodField()
 
     # Ensures photo upload is less than 4MB in size
     # and height/width are between 500-7680px 
@@ -37,6 +39,16 @@ class PhotoSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.user
 
+    def get_star_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            star = Star.objects.filter(
+                user=user,
+                photo=obj,
+            ).first()
+            return star.id if star else None
+        return None
+
 
     class Meta:
         model = Photo
@@ -56,4 +68,5 @@ class PhotoSerializer(serializers.ModelSerializer):
             'photo_time',
             'equipment_used',
             'image',
+            'star_id',
         ]
