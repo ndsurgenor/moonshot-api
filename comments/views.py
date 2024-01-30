@@ -1,4 +1,5 @@
-from rest_framework import generics, permissions
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import generics, permissions, filters
 from moonshot_api.permissions import IsPermittedOrReadOnly
 from .models import Comment
 from .serializers import CommentSerializer, CommentDetailSerializer
@@ -11,6 +12,22 @@ class CommentList(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Comment.objects.all()
+    filter_backends = [
+        filters.SearchFilter,
+        DjangoFilterBackend,
+        filters.OrderingFilter,      
+    ]
+    search_fields = [
+        'user__username',
+        'content',
+    ]
+    filterset_fields = [
+        'user',
+        'photo',      
+    ]
+    ordering_fields = [
+        'created_at',
+    ]
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)

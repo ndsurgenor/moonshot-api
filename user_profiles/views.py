@@ -13,11 +13,19 @@ class UserProfileList(generics.ListAPIView):
     queryset = UserProfile.objects.annotate(
         photo_upload_count=Count('user__photo', distinct=True)
     ).order_by('-created_at')
-    filter_backends = [filters.OrderingFilter]
+    filter_backends = [
+        filters.OrderingFilter,
+        filters.SearchFilter,
+    ]
     ordering_fields = [
         'created_at',
         'photo_upload_count'
     ]
+    search_fields = [
+        'user__username',
+        'name',
+    ]
+
 
 class UserProfileDetail(generics.RetrieveUpdateAPIView):
     """
