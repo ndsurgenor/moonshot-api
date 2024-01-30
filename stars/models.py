@@ -18,7 +18,6 @@ class Star(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-        unique_together = ['user', 'photo']
 
     def __str__(self):
         return f'{self.user}: {self.value} for {self.photo}'
