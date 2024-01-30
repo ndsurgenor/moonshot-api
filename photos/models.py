@@ -27,4 +27,4 @@ class Photo(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
-        return f'{self.title} by {self.user}'
+        return f'{self.title}, {self.created_at} by {self.user}'
