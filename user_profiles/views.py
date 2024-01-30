@@ -11,13 +11,13 @@ class UserProfileList(generics.ListAPIView):
     """    
     serializer_class = UserProfileSerializer
     queryset = UserProfile.objects.annotate(
-        photo_upload_count=Count(
-            'user__photo',
-            distinct=True
-        )
+        photo_upload_count=Count('user__photo', distinct=True)
     ).order_by('-created_at')
     filter_backends = [filters.OrderingFilter]
-    ordering_fields = ['photo_upload_count']
+    ordering_fields = [
+        'created_at',
+        'photo_upload_count'
+    ]
 
 class UserProfileDetail(generics.RetrieveUpdateAPIView):
     """

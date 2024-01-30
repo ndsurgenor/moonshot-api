@@ -12,6 +12,8 @@ class PhotoSerializer(serializers.ModelSerializer):
     user_id = serializers.ReadOnlyField(source='user.user_profile.id')
     user_avatar = serializers.ReadOnlyField(source='user.user_profile.avatar.url')
     star_id = serializers.SerializerMethodField()
+    star_count = serializers.ReadOnlyField()
+    comment_count = serializers.ReadOnlyField()
 
     # Ensures photo upload is less than 4MB in size
     # and height/width are between 500-7680px 
@@ -69,4 +71,6 @@ class PhotoSerializer(serializers.ModelSerializer):
             'equipment_used',
             'image',
             'star_id',
+            'star_count',
+            'comment_count',
         ]
