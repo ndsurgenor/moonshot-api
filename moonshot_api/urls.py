@@ -22,5 +22,4 @@ urlpatterns = [
     path('', include('user_profiles.urls')),
     path('', include('photos.urls')),
     path('', include('comments.urls')),
-    path('', include('stars.urls')),
 ]

@@ -1,16 +1,3 @@
-from rest_framework import generics, permissions
-from moonshot_api.permissions import IsPermittedOrReadOnly
-from .models import Star
-from .serializers import StarSerializer
+from django.shortcuts import render
 
-
-class StarList(generics.ListCreateAPIView):
-    """
-    GET and POST functionality for Comments
-    """
-    serializer_class = StarSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Star.objects.all()
-
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+# Create your views here.
