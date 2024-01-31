@@ -36,7 +36,6 @@ class PhotoSerializer(serializers.ModelSerializer):
                 ) 
         return value
 
-
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.user
@@ -68,9 +67,6 @@ class PhotoSerializer(serializers.ModelSerializer):
             'location',
             'photo_date',
             'photo_time',
-            'lens_used',
-            'camera_used',
-            'other_equipment_used',
             'image',
             'star_id',
             'star_count',

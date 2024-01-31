@@ -10,7 +10,7 @@ class Photo(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    title = models.CharField(max_length=127, blank=True)
+    title = models.CharField(max_length=127)
     main_feature = models.CharField(
         max_length=127, choices=MAIN_FEATURES
     )
@@ -18,12 +18,9 @@ class Photo(models.Model):
     location = models.CharField(max_length=127, blank=True)
     photo_date = models.DateField()
     photo_time = models.TimeField()
-    lens_used = models.CharField(max_length=127, blank=True)
-    camera_used = models.CharField(max_length=127, blank=True)
-    other_equipment_used = models.TextField(max_length=127, blank=True)
     image = models.ImageField(
         upload_to='images/',
-        default = '../default_photo'
+        default = '../default_photo',
     )
 
 
