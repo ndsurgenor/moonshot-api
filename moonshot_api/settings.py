@@ -60,11 +60,11 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
-    '.herokuapp.com',
+    'moonshot-api-ff76437bf02f.herokuapp.com',
     '8000-ndsurgenor-moonshotapi-kwgy8dkz1c4.ws-eu107.gitpod.io',
 ]
 
