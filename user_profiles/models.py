@@ -22,6 +22,7 @@ class UserProfile(models.Model):
     def __str__(self):
         return f'User Profile for {self.user}'
 
+
 # Automatically creates an User Profile for a user when they sign up
 def create_user_profile(sender, instance, created, **kwargs):
     if created:

@@ -18,6 +18,9 @@ class Photo(models.Model):
     location = models.CharField(max_length=127, blank=True)
     photo_date = models.DateField()
     photo_time = models.TimeField()
+    lens_used = models.CharField(max_length=127, blank=True)
+    camera_used = models.CharField(max_length=127, blank=True)
+    other_equipment_used = models.TextField(max_length=127, blank=True)
     image = models.ImageField(
         upload_to='images/',
         default = '../default_photo',

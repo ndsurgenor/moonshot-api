@@ -40,8 +40,7 @@ class PhotoList(generics.ListCreateAPIView):
         'comment_count',
     ]
 
-
-    def link_photo_with_user(self, serializer):
+    def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
 
