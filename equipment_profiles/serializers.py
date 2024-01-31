@@ -21,8 +21,8 @@ class EquipmentProfileSerializer(serializers.ModelSerializer):
             'user',
             'created_at',
             'updated_at',
-            'lens',
-            'camera',
+            'main_lens',
+            'main_camera',
             'other_equipment',
             'is_owner',
         ]

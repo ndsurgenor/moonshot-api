@@ -5,9 +5,9 @@ from .models import EquipmentProfile
 from .serializers import EquipmentProfileSerializer
 
 
-class EquipmentProfileList(generics.ListCreateAPIView):
+class EquipmentProfileList(generics.ListAPIView):
     """
-    GET and POST functionality for Equipment Profiles
+    GET functionality for Equipment Profiles
     """
     serializer_class = EquipmentProfileSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -19,8 +19,8 @@ class EquipmentProfileList(generics.ListCreateAPIView):
     ]
     search_fields = [
         'user__username',
-        'lens',
-        'camera',
+        'main_lens',
+        'main_camera',
         'other_equipment',
     ]
     filterset_fields = [
@@ -34,9 +34,9 @@ class EquipmentProfileList(generics.ListCreateAPIView):
         serializer.save(user=self.request.user)
 
 
-class EquipmentProfileDetail(generics.RetrieveUpdateDestroyAPIView):
+class EquipmentProfileDetail(generics.RetrieveUpdateAPIView):
     """
-    PUT and DELETE functionality for Equipment Profiles
+    PUT functionality for Equipment Profiles
     """
     serializer_class = EquipmentProfileSerializer
     permission_classes = [IsPermittedOrReadOnly]
