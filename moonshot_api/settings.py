@@ -64,7 +64,7 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     'localhost',
-    'moonshot-api-ff76437bf02f.herokuapp.com',
+    '.herokuapp.com',
     '8000-ndsurgenor-moonshotapi-kwgy8dkz1c4.ws-eu107.gitpod.io',
 ]
 
