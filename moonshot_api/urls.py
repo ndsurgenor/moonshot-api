@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('photos.urls')),
     path('', include('comments.urls')),
     path('', include('stars.urls')),
+    path('', include('equipment_profiles.urls')),
 ]
