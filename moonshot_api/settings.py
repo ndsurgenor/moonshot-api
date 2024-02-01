@@ -42,8 +42,8 @@ if 'DEV' not in os.environ:
     REST_FRAMEWORK['DEFAULT_RENDER_CLASSES'] = [
         'rest_framework.renderers.JSONRenderer',
     ]
-
 REST_USE_JWT = True
+
 JWT_AUTH_SECURE = True
 JWT_AUTH_COOKIE = 'my-app-auth'
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
@@ -60,7 +60,7 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -155,7 +155,7 @@ if 'DEV' in os.environ:
     }
 else:
     DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
 
 
