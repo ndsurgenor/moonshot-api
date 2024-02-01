@@ -38,7 +38,7 @@ REST_FRAMEWORK = {
     'DATETIME_FORMAT': '%a %d-%m-%Y %H:%M'
 }
 
-if 'DEV' not in os.environ:
+if 'DEV' in os.environ:
     REST_FRAMEWORK['DEFAULT_RENDER_CLASSES'] = [
         'rest_framework.renderers.JSONRenderer',
     ]
@@ -60,6 +60,7 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     'localhost',
