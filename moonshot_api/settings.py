@@ -38,10 +38,14 @@ REST_FRAMEWORK = {
     'DATETIME_FORMAT': '%a %d-%m-%Y %H:%M'
 }
 
-if 'DEV' in os.environ:
-    REST_FRAMEWORK['DEFAULT_RENDER_CLASSES'] = [
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
-    ]
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    )
+}
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
