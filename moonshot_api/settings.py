@@ -116,15 +116,24 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
 ]
 
-if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [
-        os.environ.get('CLIENT_ORIGIN')
-    ]
+# if 'CLIENT_ORIGIN' in os.environ:
+#     CORS_ALLOWED_ORIGINS = [
+#         os.environ.get('CLIENT_ORIGIN')
+#     ]
+# if 'CLIENT_ORIGIN_DEV' in os.environ:
+#     extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
+#     CORS_ALLOWED_ORIGIN_REGEXES = [
+#         rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
+#     ]
+
+CORS_ALLOWED_ORIGINS = [
+    "https://moonshot-api-ff76437bf02f.herokuapp.com",
+    "https://moonshot-13d14b7a6fbd.herokuapp.com",
+    "http://localhost:5173",
+]
 if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
-    CORS_ALLOWED_ORIGIN_REGEXES = [
-        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
-    ]
+    dev_origin = os.environ.get('CLIENT_ORIGIN_DEV')
+    CORS_ALLOWED_ORIGINS.append(dev_origin)
 
 CORS_ALLOW_CREDENTIALS = True
 
