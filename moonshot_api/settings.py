@@ -38,9 +38,9 @@ REST_FRAMEWORK = {
     ),
     #-------------------------------
     'DEFAULT_AUTHENTICATION_CLASSES': [(
-        'rest_framework.authentication.SessionAuthentication'
-        if 'DEV' in os.environ
-        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
     )],
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.PageNumberPagination',
@@ -116,24 +116,15 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
 ]
 
-# if 'CLIENT_ORIGIN' in os.environ:
-#     CORS_ALLOWED_ORIGINS = [
-#         os.environ.get('CLIENT_ORIGIN')
-#     ]
-# if 'CLIENT_ORIGIN_DEV' in os.environ:
-#     extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
-#     CORS_ALLOWED_ORIGIN_REGEXES = [
-#         rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
-#     ]
-
-CORS_ALLOWED_ORIGINS = [
-    "https://moonshot-api-ff76437bf02f.herokuapp.com",
-    "https://moonshot-13d14b7a6fbd.herokuapp.com",
-    "http://localhost:5173",
-]
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
 if 'CLIENT_ORIGIN_DEV' in os.environ:
-    dev_origin = os.environ.get('CLIENT_ORIGIN_DEV')
-    CORS_ALLOWED_ORIGINS.append(dev_origin)
+    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
+    ]
 
 CORS_ALLOW_CREDENTIALS = True
 
