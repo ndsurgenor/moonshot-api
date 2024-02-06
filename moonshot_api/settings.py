@@ -38,14 +38,11 @@ REST_FRAMEWORK = {
     ),
     #-------------------------------
     'DEFAULT_AUTHENTICATION_CLASSES': [(
-        # 'rest_framework.authentication.TokenAuthentication'
-        # if 'DEV' in os.environ
-        # else
+        'rest_framework.authentication.TokenAuthentication'
+        if 'DEV' in os.environ
+        else
         'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
     )],
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.AllowAny',
-    ),
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 8,
@@ -56,6 +53,7 @@ REST_USE_JWT = True
 JWT_AUTH_SECURE = True
 JWT_AUTH_COOKIE = 'my-app-auth'
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+JWT_AUTH_HTTPONLY = False
 JWT_AUTH_SAMESITE = 'None'
 
 REST_AUTH_SERIALIZERS = {
