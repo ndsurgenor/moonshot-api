@@ -27,27 +27,45 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# REST_FRAMEWORK = {
+#     #Comment this out in development
+#     # ------------------------------
+#     'DEFAULT_RENDERER_CLASSES': (
+#         'rest_framework.renderers.JSONRenderer',
+#     ),
+#     'DEFAULT_PARSER_CLASSES': (
+#         'rest_framework.parsers.JSONParser',
+#     ),
+#     #-------------------------------
+#     'DEFAULT_AUTHENTICATION_CLASSES': [(
+#         'rest_framework.authentication.SessionAuthentication'
+#         if 'DEV' in os.environ
+#         else
+#         'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+#     )],
+#     'DEFAULT_PAGINATION_CLASS':
+#         'rest_framework.pagination.PageNumberPagination',
+#     'PAGE_SIZE': 8,
+#     'DATETIME_FORMAT': '%a %d-%m-%Y %H:%M'
+# }
+
 REST_FRAMEWORK = {
-    #Comment this out in development
-    # ------------------------------
-    'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.JSONRenderer',
-    ),
-    'DEFAULT_PARSER_CLASSES': (
-        'rest_framework.parsers.JSONParser',
-    ),
-    #-------------------------------
-    'DEFAULT_AUTHENTICATION_CLASSES': [(
-        'rest_framework.authentication.SessionAuthentication'
-        if 'DEV' in os.environ
-        else
-        'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
-    )],
-    'DEFAULT_PAGINATION_CLASS':
-        'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 8,
-    'DATETIME_FORMAT': '%a %d-%m-%Y %H:%M'
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        (
+            "rest_framework.authentication.SessionAuthentication"
+            if "DEV" in os.environ
+            else "dj_rest_auth.jwt_auth.JWTCookieAuthentication"
+        )
+    ],
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+    "DATETIME_FORMAT": "%d %b %Y",
 }
+
+if "DEV" not in os.environ:
+    REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = [
+        "rest_framework.renderers.JSONRenderer",
+    ]
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
@@ -67,11 +85,13 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+# DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
     'moonshot-api-ff76437bf02f.herokuapp.com',
     '8000-ndsurgenor-moonshotapi-kwgy8dkz1c4.ws-eu107.gitpod.io',
+    '8000-ndsurgenor-moonshotapi-kwgy8dkz1c4.ws-eu108.gitpod.io'
 ]
 
 
