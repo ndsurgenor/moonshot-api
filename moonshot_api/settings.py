@@ -62,7 +62,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
 # DEBUG = True
 
-ALLOWED_HOSTS = [
+ALLOWED_HOSTS = [    
+    os.environ.get('ALLOWED_HOST'),
     'localhost',
     'moonshot-api-ff76437bf02f.herokuapp.com',
     '8000-ndsurgenor-moonshotapi-kwgy8dkz1c4.ws-eu107.gitpod.io',
