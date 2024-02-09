@@ -26,5 +26,5 @@ class UserProfileSerializer(serializers.ModelSerializer):
             'details',
             'avatar',
             'is_owner',
-            'photo_upload_count',
+            'photo_upload_count',            
         ]
