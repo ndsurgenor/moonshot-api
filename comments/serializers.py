@@ -8,8 +8,8 @@ class CommentSerializer(serializers.ModelSerializer):
     """
     user = serializers.ReadOnlyField(source='user.username')
     is_owner = serializers.SerializerMethodField()
-    user_id = serializers.ReadOnlyField(source='user.user_profile.id')
-    user_avatar = serializers.ReadOnlyField(source='user.user_profile.avatar.url')
+    user_id = serializers.ReadOnlyField(source='user.userprofile.id')
+    user_avatar = serializers.ReadOnlyField(source='user.userprofile.avatar.url')
 
     
     def get_is_owner(self, obj):
