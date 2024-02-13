@@ -17,7 +17,6 @@ class StarSerializer(serializers.ModelSerializer):
             'user',
             'photo',
             'created_at',
-            'value',
         ]
     
     def create(self, validated_data):

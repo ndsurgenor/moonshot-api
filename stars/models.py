@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from photos.models import Photo
-from .variables import STAR_RATINGS
 
 
 class Star(models.Model):
@@ -14,11 +13,10 @@ class Star(models.Model):
         on_delete=models.CASCADE,
         related_name='stars')
     created_at = models.DateTimeField(auto_now_add=True)
-    value = models.IntegerField(choices=STAR_RATINGS)
 
     class Meta:
         ordering = ['-created_at']
         unique_together = ['user', 'photo']
 
     def __str__(self):
-        return f'{self.user}{self.photo}: {self.value} star(s)'
+        return f'{self.user}{self.photo}'
