@@ -2,10 +2,10 @@
 
 MAIN_FEATURES = [
     ('aurora', 'Aurora'),
-    ('constellation', 'Constellation'),
     ('deep_sky', 'Deep-Sky'),
     ('moon', 'Moon'),
     ('nightscape', 'Nightscape'),
     ('planet', 'Planet'),
+    ('stars', 'Stars'),
     ('other', '(Other)'),       
 ]
