@@ -15,9 +15,9 @@ class Photo(models.Model):
         max_length=127, choices=MAIN_FEATURES
     )
     description = models.TextField(blank=True)
-    location = models.CharField(max_length=127, blank=True)
-    photo_date = models.DateField()
-    photo_time = models.TimeField()
+    location = models.CharField(max_length=127)
+    photo_date = models.DateField(blank=True)
+    photo_time = models.TimeField(blank=True)
     lens_used = models.CharField(max_length=127, blank=True)
     camera_used = models.CharField(max_length=127, blank=True)
     other_equipment_used = models.TextField(max_length=127, blank=True)
