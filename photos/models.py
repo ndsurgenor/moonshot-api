@@ -18,9 +18,21 @@ class Photo(models.Model):
     location = models.CharField(max_length=127)
     photo_date = models.DateField(blank=True, null=True)
     photo_time = models.TimeField(blank=True, null=True)
-    lens_used = models.CharField(max_length=127, blank=True)
-    camera_used = models.CharField(max_length=127, blank=True)
-    other_equipment_used = models.TextField(max_length=127, blank=True)
+    lens_used = models.CharField(
+        max_length=127,
+        blank=True,
+        null=True
+    )
+    camera_used = models.CharField(
+        max_length=127,
+        blank=True,
+        null=True
+    )
+    other_equipment_used = models.TextField(
+        max_length=127,
+        blank=True,
+        null=True
+    )
     image = models.ImageField(
         upload_to='images/',
         default = '../default_photo',
