@@ -27,6 +27,7 @@ class CommentList(generics.ListCreateAPIView):
     ]
     ordering_fields = [
         'created_at',
+        'updated_at',
     ]
 
     def perform_create(self, serializer):

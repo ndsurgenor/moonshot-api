@@ -32,7 +32,8 @@ class PhotoList(generics.ListCreateAPIView):
         'user',
         'main_feature',
         'user__userprofile',
-        'stars__user__userprofile',        
+        'stars__user__userprofile',
+        'comments__user__userprofile',        
     ]
     ordering_fields = [
         'created_at',
