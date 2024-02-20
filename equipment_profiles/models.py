@@ -11,13 +11,22 @@ class EquipmentProfile(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     main_lens = models.CharField(
         max_length=127,
-        default='Not yet specified'
+        default='No details specified',
+        blank=True,
+        null=True,
     )
     main_camera = models.CharField(
         max_length=127,
-        default='Not yet specified'
+        default='No details specified',
+        blank=True,
+        null=True,
     )
-    other_equipment = models.TextField(blank=True)
+    other_equipment = models.TextField(
+        max_length=255,
+        default='No details specified',
+        blank=True,
+        null=True,
+    )
 
 
     class Meta:
