@@ -23,7 +23,7 @@ class CommentList(generics.ListCreateAPIView):
     ]
     filterset_fields = [
         'user',
-        'photo',      
+        'photo',  
     ]
     ordering_fields = [
         'created_at',
