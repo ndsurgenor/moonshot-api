@@ -2,7 +2,7 @@
 
 MAIN_FEATURES = [
     ('aurora', 'Aurora'),
-    ('deep_sky', 'Deep-Sky'),
+    ('deep-sky', 'Deep-Sky'),
     ('moon', 'Moon'),
     ('nightscape', 'Nightscape'),
     ('planet', 'Planet'),
