@@ -1,13 +1,11 @@
-# moonshot
-_Please note that this README file outlines the frontend development of this application; if you require info on backend development please navigate to [the README for moonshot-api](https://github.com/ndsurgenor/moonshot-api/blob/main/README.md)_
+# moonshot-api
+_Please note that this README file outlines the backend development of this application; if you require info on frontend development please navigate to [the README for moonshot](https://github.com/ndsurgenor/moonshot/blob/main/README.md)_
 
 Moonshot (stylised completely in lowercase) is a web application built for the sharing and discussion around amateur astrophtography. This site has been designed to allow imagined users and visitors the ability to view photos uploaded by registered users of the site; registered users will also be able to create a personal profile and 'star' (that is, like) and comment on other users' posts.
 
-[LIVE LINK to Application](https://moonshot-13d14b7a6fbd.herokuapp.com/)<br>
 [LIVE LINK to API](https://moonshot-api-ff76437bf02f.herokuapp.com/)<br>
+[LIVE LINK to Application](https://moonshot-13d14b7a6fbd.herokuapp.com/)<br>
 _Note: to open links in a new tab, hold CTRL + Click_
-
-![Overview](docs/overview.png)
 
 ## Table Of Contents
 - [Introduction](#moonshot)
@@ -36,7 +34,7 @@ _Note: to open links in a new tab, hold CTRL + Click_
 
 ## UX Design
 
-The site is aimed at helping users to easily upload their personal photos of the nightsky alongside relevant info such as what the photo shows, where/when it was taken, and what equipment was used. It also aims to give users the ability to view, star, and comment on the photos uploaded by other users of the site.
+The site is aimed at helping users to easily upload their personal photos of the nightsky alongside relevant info such as what the photo shows, where/when it was taken, and what equipment was used. It also aims to give users the ability to view, star, and comment on the photos uploaded by other users of the site. This backend site models these details so they can be controlled by a superuser and also be utilised by the user via the frontend components. 
 
 ## Strategy
 
@@ -154,37 +152,14 @@ Interaction|[6.4](#milestone-6---community-interaction "As a Site User I want to
 
 ## Skeleton
 
-### Wireframe Models
-Now that specific features had been decided upon, a wireframing tool was used to give guidance as to how these features would look in practice. All of the site-design models which follow can be viewed on one page [using the following link](https://cacoo.com/diagrams/0fnnxvmLc5f5SWHK/D61AD)
+### Database Model
+Now that specific features had been decided upon, a database model was designed to give guidance as to how these features would relate to one another at the backend.
 
-### Logged-Out Pages
-- Home (logged-out)
-- Sign Up
-- Sign In
+The structure was designed on the basis of exposing endpoints in the [django-rest-allauth](https://django-rest-auth.readthedocs.io/en/latest/installation.html) to handle authentication with the User model, while the other models would be linked ot this and completely coded by myself.
 
-![Home-Intial](docs/wf-home-initial.png)
-![Sign-Up](docs/wf-signup.png)
-![Sign-In](docs/wf-signin.png)
+The diagram below shows the relationship of various tables within the project. The models on the left, User Profile and Equipment Profile as set up to automatically create an instance whenever a user signs up/is created via the User model. The models on the right create instances whenever the admin/user specifically creates them, the Photo model being capable of have numerous instance associated with one User and the Stars/Comments likewise in relation to the Photo model.
 
-### Logged-In Pages
-- Home (logged-in)
-- Upload
-- Photo Detail
-- Profile
-- Gear/Account Forms
-
-![Home-User](docs/wf-home-user.png)
-![Upload](docs/wf-upload-form.png)
-![Photo-Detail](docs/wf-photo-detail.png)
-![Profile](docs/wf-user-profile.png)
-![Profile-edit](docs/wf-profile-edit.png)
-
-<!-- ### Database Model
-!!! MOVE THIS TO API README !!!
-
-The [database model](TO BE ADDED) was designed on the basis of django-allauth handling data for authorised users, while the booking model would be coded by myself. The diagram below shows the relationship of various tables within the project, but central to this is the relationship between the 'auth_user' and 'booking_sys_booking' tables; specifically, a one-to-many by connection of the user_id and contact_id fields i.e. a single user can create many bookings, but each booking can only belong to one user.
-
-![Database](TO BE ADDED) -->
+![Database](docs/database.png)
 
 ## Surface
 
@@ -203,9 +178,35 @@ With wireframe and database models in place, actual features of the site could n
 
   ![Design](docs/design.png)
 
-### Features & Components Implemented
+### Features
 
 Each of the following implementations was added in response to the user stories and acceptance criteria above, details of which are provided below each feature heading for easy reference.
+
+#### Welcome Message
+> &bull; 
+
+#### User model
+
+#### User Profile model
+> &bull; 1.2 - User Story: as a Site Admin I want to be able to create and edit User Profiles so I can control user permissions on the frontend  
+&bull; 1.7 - User Story: as a Site Admin I want to have access to search and filtering tools on the backend so I can find and edit particular data more easily 
+
+#### Equipment Profile model
+> &bull; 1.3 - User Story: as a Site Admin I want to be able to review and edit Equipment Profiles for users so I can details on the frontend  
+&bull; 1.7 - User Story: as a Site Admin I want to have access to search and filtering tools on the backend so I can find and edit particular data more easily 
+
+#### Photo model
+> &bull; 1.4 - User Story: as a Site Admin I want to be able to review and edit Photo uploads so I can allow and control images on the frontend  
+&bull; 1.7 - User Story: as a Site Admin I want to have access to search and filtering tools on the backend so I can find and edit particular data more easily  
+
+#### Comment model
+> &bull; 1.5 - User Story: as a Site Admin I want to be able to review and edit Comments for so I can allow and control comments on the frontend  
+&bull; 1.7 - User Story: as a Site Admin I want to have access to search and filtering tools on the backend so I can find and edit particular data more easily 
+
+#### Star model
+> &bull; 1.6 - User Story: as a Site Admin I want to be able to review and edit Star ratings (photo ratings) by users so I can allow and control star ratings on the frontend  
+&bull; 1.7 - User Story: as a Site Admin I want to have access to search and filtering tools on the backend so I can find and edit particular data more easily 
+
 
 #### Navbar & Toggler
 > &bull; 2.2 - User Story: as a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site   
@@ -500,7 +501,7 @@ This site was deployed to and is currently [hosted on the Heroku platform](https
 2. Navigate to the moonshot GitHub Repository: https://github.com/ndsurgenor/moonshot
 3. Towards the top right, under the main banner, click 'Fork'
 4. Adjust the form fields if desired, then click 'Create fork' to finish
-_Repeat these steps for the [moonshot-api](https://github.com/ndsurgenor/moonshot-api) repo if required, as described in backend README_
+_Repeat these steps for the [moonshot](https://github.com/ndsurgenor/moonshot) repo if required, as described in backend README_
 
 ### Cloning the Repository/Running Locally
 1. Login to/create your [GitHub](https://github.com) account
@@ -509,27 +510,8 @@ _Repeat these steps for the [moonshot-api](https://github.com/ndsurgenor/moonsho
 4. Click the copy icon (two overlapped squares) beside the repository URL
 5. Open your local IDE and create a new project, ensuring git is installed
 6. Run ```git clone copied-git-url``` in the terminal to finish
-_Repeat these steps for the [moonshot-api](https://github.com/ndsurgenor/moonshot-api) repo if required, as described in backend README_
+_Repeat these steps for the [moonshot](https://github.com/ndsurgenor/moonshot) repo if required, as described in backend README_
 
 ## Credits & Acknowledgements
-- All photos taken from [Pexels](https://www.pexels.com/) website and directly accredited to the following users (links point to specific photos):
-  - [Ave Calvar Martinez](https://www.pexels.com/photo/lighthouse-glowing-on-starry-sky-4954713/)
-  - [Benjamin Suter](https://www.pexels.com/photo/blue-and-green-sky-and-mountain-3617500/)
-  - [Eberhard Grossgasteiger](https://www.pexels.com/photo/mountain-rock-and-moon-1366835/)
-  - [Faik Akmd](https://www.pexels.com/photo/photo-of-night-sky-1025469/)
-  - [Flavien Beauvais](https://www.pexels.com/photo/stars-in-the-sky-at-night-14596641/)
-  - [Frank Cone](https://www.pexels.com/photo/super-moon-over-snowcapped-mountain-2361600/)
-  - [Marco Milanesi](https://www.pexels.com/photo/photo-of-mountain-under-starry-night-sky-2670898/)
-  - [Neale LaSalle](https://www.pexels.com/photo/silhouette-of-trees-during-nighttime-631477/)  
-  - [Rakicevic Nenad](https://www.pexels.com/photo/creative-photo-of-person-holding-glass-mason-jar-under-a-starry-sky-1274260/)
-  - [Ross Peebles](https://www.pexels.com/photo/bare-tree-under-starry-sky-731649/)
-  - [S Migaj](https://www.pexels.com/photo/water-falls-1009136/)
-  - [Şeyma Alkaş](https://www.pexels.com/photo/photo-of-full-moon-on-the-sky-15018956/)
-  - [Shahidrafique Awan](https://www.pexels.com/photo/crescent-moon-during-night-744479/)
-  - [Son Tung Tran](https://www.pexels.com/photo/full-blood-moon-in-an-evening-sky-6540589/)
-  - [Stein Egil Liland](https://www.pexels.com/photo/aurora-borealis-photo-1933317/)
-  - ['Pixabay'](https://www.pexels.com/photo/great-sphinx-of-giza-under-blue-starry-sky-262780/)
-  - ['Visit Greenland'](https://www.pexels.com/photo/aurora-borealis-360912/)  
-- `useViewportWidth()` hook adapted from [code by Ferdinand Steenkamp](https://forum.rescript-lang.org/t/addeventlistener-for-window-resize/1254/3)
-- README.md and TESTING.md structure/outline adapted from [Asia Wi](https://github.com/AsiaWi/snap-it-up-frontend)
+- README.md and TESTING.md structure/outline adapted from [Asia Wi](https://github.com/AsiaWi/snap-it-up-backend)
 - Many thanks to my Code Institute tutor [Daisy McGirr](https://www.linkedin.com/in/daisy-mcgirr-4a3671173/) for her guidance, support, and strong effort in helping me to build this project
