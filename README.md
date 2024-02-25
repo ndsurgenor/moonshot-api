@@ -169,9 +169,9 @@ With the database design now in place, actual models for the site could now be c
 Each of the following implementations was added in response to the user stories and acceptance criteria above, details of which are provided below each feature heading for easy reference.
 
 #### Welcome Message
-The initial page of the API displays a brief welcome message confirming connected with the site and its name.
+The initial page of the API displays a brief welcome message confirming connected with the site and its name. This page is accessed via https://moonshot-api-ff76437bf02f.herokuapp.com
 
-![Welcome](docs/welcome.png)
+![Welcome](docs/mds-welcome.png)
 
 #### User model
 > &bull; 1.2 - User Story: as a Site Admin I want to be able to create and edit User Profiles so I can control user permissions on the frontend  
@@ -179,21 +179,42 @@ The initial page of the API displays a brief welcome message confirming connecte
 &bull; 2.4 - User Story: as a Site User I want to easily access a sign in page so I can use the full functionality of the site  
 &bull; 3.4 - User Story: as a Site User I want to be able to sign out from my account so that I know my account cannot be accessed by unauthorised persons
 
-![User](docs/fts-user.png)
+![User](docs/mds-user.png)
+
+- The User model is accessed by appending ['/admin/auth/user/'](https://moonshot-api-ff76437bf02f.herokuapp.com/admin/auth/user/) to the main API url and requires admin privileges to access
+- User model functionality is handled by [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/latest/) and so models, serializers, views etc. apepar directly as folders within this application
+- When a User model instance is created a directly associated User Profile and Equipment Profile instance is also created with identical 'id' values
 
 #### User Profile model
 > &bull; 1.2 - User Story: as a Site Admin I want to be able to create and edit User Profiles so I can control user permissions on the frontend  
 &bull; 1.7 - User Story: as a Site Admin I want to have access to search and filtering tools on the backend so I can find and edit particular data more easily  
 &bull; 5.5 - User Story: as a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio, and equipment details
 
-![UserProfile](docs/fts-userprofile.png)
+![UserProfile](docs/mds-user-profile.png)
+
+- A User Profile model instance is created automatically whenever a user signs up/is created using the User model
+- The User Profile model is accessed by appending ['/user-profiles/'](https://moonshot-api-ff76437bf02f.herokuapp.com/user-profiles/) to the main API url; an individual record of this model is accessed by also appending the relevant id
+- User Profile admin access id achieved by appending ['/admin/user_profiles/'](https://moonshot-api-ff76437bf02f.herokuapp.com/admin/user_profiles/) to the main API url, but requires admin privileges to access  
+- The model uses GET and PUT views to list and update user profiles respectively
+- In addition to those shown in the diagram above, 'is_owner' and 'photo_upload_count' fields have been added to the model through use of a serializer
+- A default avatar is added to every User profile by means of connection to the Cloudinary API
+- Ordering fields have been added to the model to allow ordering by 'created_at' and 'photo_upload_count'
+- Search fields have been added to the model to allow searching of associated username and name attributes
 
 #### Equipment Profile model
 > &bull; 1.3 - User Story: as a Site Admin I want to be able to review and edit Equipment Profiles for users so I can details on the frontend  
 &bull; 1.7 - User Story: as a Site Admin I want to have access to search and filtering tools on the backend so I can find and edit particular data more easily  
 &bull; 5.5 - User Story: as a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio, and equipment details
 
-![Equipment](docs/fts-equipment.png)
+![Equipment](docs/mds-equipment.png)
+
+- An Equipment Profile model instance is created automatically whenever a user signs up/is created using the User model
+- The Equipment Profile model is accessed by appending ['/equipment-profiles/'](https://moonshot-api-ff76437bf02f.herokuapp.com/equipment-profiles/) to the main API url; an individual record of this model is accessed by also appending the relevant id 
+- The model uses GET and PUT views to list and update equipment profiles respectively
+- In addition to those fields shown in the diagram above, an 'is_owner' field has been added to the model through use of a serializer
+- Filters have been added to allow filtering by user
+- Ordering fields have been added to the model to allow ordering by 'created_at'
+- Search fields have been added to the model to allow searching of associated username, main lens, main camera, and other equipment attributes
 
 #### Photo model
 > &bull; 1.4 - User Story: as a Site Admin I want to be able to review and edit Photo uploads so I can allow and control images on the frontend  
@@ -206,7 +227,16 @@ The initial page of the API displays a brief welcome message confirming connecte
 &bull; 5.3 - User Story: as a Site User I want to be able to search photos with keywords (title, feature, user, etc.) so I can view content specifically related to those keywords  
 &bull; 5.4 - User Story: as a Site User I want to be able to select an individual photo from the feed so I can view details, comments, and upvotes directly associated with that photo  
 
-![Photo](docs/fts-photo.png)
+![Photo](docs/mds-photo.png)
+
+- The Photo model is accessed by appending ['/photos/'](https://moonshot-api-ff76437bf02f.herokuapp.com/photos/) to the main API url; an individual record of this model is accessed by also appending the relevant id 
+- The model uses GET, POST, PUT and DELETE views to list, create, update and delete photos respectively
+- Variables have been added to the 'main_feature' field to limit permitted values
+- In addition to those shown in the diagram above, 'user', 'user_avatar', 'is_owner', 'star_id', 'star_count' and 'comment_count' fields have been added to the model through use of a serializer
+- Image validation has also been added via the serializer to ensure that photos are less than 4MB in size and les than 7096px in width/height
+- Filters have been added to the model to allow filtering by users, main features, associated profiles, and stars/comments associated with a particular photo instance 
+- Ordering fields have been added to the model to allow ordering by 'created_at', 'star_count' and 'comment_count'
+- Search fields have been added to the model to allow searching of users, titles, main features, desciptions, and locations
 
 #### Comment model
 > &bull; 1.5 - User Story: as a Site Admin I want to be able to review and edit Comments for so I can allow and control comments on the frontend  
@@ -214,7 +244,14 @@ The initial page of the API displays a brief welcome message confirming connecte
 &bull; 6.2 User Story: as a Site User I want to be able to comment on other users photos so that I can ask questions and/or start a discussion about the photo  
 &bull; 6.4 - User Story: as a Site User I want to view a feed of those photos I've commented on so I have easy access to posts where I am involved in a discussion thread
 
-![Comment](docs/fts-comment.png)
+![Comment](docs/mds-comment.png)
+
+- The Comment model is accessed by appending ['/comments/'](https://moonshot-api-ff76437bf02f.herokuapp.com/comments/) to the main API url; an individual record of this model is accessed by also appending the relevant id 
+- The model uses GET, POST, PUT and DELETE views to list, create, update and delete comments respectively
+- In addition to those shown in the diagram above, 'user_id', 'user_avatar' and 'is_owner' fields have been added to the model through use of a serializer
+- Filters have been added to the model to allow filtering by assocaited users and photos 
+- Ordering fields have been added to the model to allow ordering by 'created_at'
+- Search fields have been added to the model to allow searching of associated usernames and content
 
 #### Star model
 > &bull; 1.6 - User Story: as a Site Admin I want to be able to review and edit Star ratings (photo ratings) by users so I can allow and control star ratings on the frontend  
@@ -222,12 +259,10 @@ The initial page of the API displays a brief welcome message confirming connecte
 &bull; 6.1 User Story: as a Site User I want to be able to upvote other users photos so that I can show my appreciation for their photography  
 &bull; 6.3 - User Story: as a Site User I want to view a feed of those photos I've upvoted so I have easy access to those posts I've shown a particular interest in
 
-![Star](docs/fts-star.png) 
+![Star](docs/mds-star.png)
 
-#### 404 Error Page
-
-![404](docs/fts-404.png)
-
+- The Star model is accessed by appending ['/stars/'](https://moonshot-api-ff76437bf02f.herokuapp.com/stars/) to the main API url; an individual record of this model is accessed by also appending the relevant id 
+- The model uses GET, POST, PUT and DELETE views to list, create, update and delete stars respectively
 
 ### Features to be implemented
 
@@ -240,7 +275,7 @@ The following features have been identified as long-term goals which bring value
 #### Technologies Used
 In order to code and design these features and components the following technologies were utilised:
 
-- Libraries
+- Dependencies
   - asgiref==3.3.4
   - cloudinary==1.25.0
   - dj-rest-auth==2.1.9
@@ -263,20 +298,24 @@ In order to code and design these features and components the following technolo
   - requests-oauthlib==1.3.0
   - sqlparse==0.4.1
   - urllib3==1.26.15
-- [Django REST]()
-  - Used as package manager to install dependencies
-- [Python]()
+- [Django REST Framework](https://www.django-rest-framework.org/)
+  - Used as main toolkit for building theAPI
+- [Python](https://www.python.org/)
   - Used as the main coding language in the backend development of this project
-- [Heroku](https://heroku.com)
-  - Used as the cloud-based deployment platform for this project
+- [Django Allauth](https://docs.allauth.org/en/latest/)
+  - Used for sign up/in/out authentication
 - [ElephantSQL](https://elephantsql.com)
   - Used as the database hosting service
+- [Cloudinary](https://cloudinary.com/) & [Pillow](https://pillow.readthedocs.io/en/stable/handbook/overview.html)
+  - Used to host and process image files contained within the User Profile and Photo models
+- [Heroku](https://heroku.com)
+  - Used as the cloud-based deployment platform for this project
 
 #### Packages Used (front & backend)
 - [Gitpod](https://gitpod.io) used to code the site and transfer files between the editor and the repository
 - [GitHub](https://github.com) used to store the files for this project
 - [Cacoo](https://cacoo.com) used to develop the wireframe models for the site design
-- [Lucid Chart](https://lucid.app/) used to create the database diagram (see backend README)
+- [Lucid Chart](https://lucid.app/) used to create the database diagram
 - [Google Fonts](https://fonts.google.com/) used to style the text throughout the site
 - [Coolors](https://coolors.co/) used to help create the colour scheme
 - [React Icons](https://react-icons.github.io/react-icons/) used to display the icons used throughout the site
@@ -312,7 +351,7 @@ Manual and automated testing undertaken for this project can be viewed in the se
     - [Lighthouse](TESTING.md#lighthouse)
 - [Bugs](TESTING.md#bugs) -->
 
-## Deployment  !!! TO BE UPDATED !!!
+## Deployment
 
 ### Heroku Deployment (frontend & backend)
 This site was deployed to and is currently [hosted on the Heroku platform](https://moonshot-13d14b7a6fbd.herokuapp.com/). The steps for deploying to Heroku, using ElephantSQL as the database host, are as follows:
