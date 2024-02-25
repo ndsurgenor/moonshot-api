@@ -1,6 +1,6 @@
+import datetime
 from django.db import models
 from django.contrib.auth.models import User
-import datetime
 from .variables import MAIN_FEATURES
 
 
@@ -29,6 +29,7 @@ class Photo(models.Model):
 
 
     class Meta:
+        "Meta class for photos"
         ordering = ['-created_at']
 
     def __str__(self):
