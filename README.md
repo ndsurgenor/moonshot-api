@@ -163,174 +163,71 @@ The diagram below shows the relationship of various tables within the project. T
 
 ## Surface
 
-With wireframe and database models in place, actual features of the site could now be coded using HTML, Bootstrap for ReactJS, CSS, and JavaScript JSX & React, all according to the criteria listed above.
-
-### Design & Typography
-  - [Poppins](https://fonts.google.com/specimen/Poppins) was chosen as the font for h1 and h2 elements throughout the site to give a refined, rounded look to major headings
-  - All other text on the site is styled using [Barlow](https://fonts.google.com/noto/specimen/Barlow) to provide a minimalist, narrower-styled contrast to the headings and be clearly legible for larger portions of text
-  - The main colours selected for the site were chosen as reflection of elements often associated with space and the sky, but choosing in favour of deep blues over black to provide a nicer contrast for users. Specifically these colours and their hexadecimal codes are:
-    - Oxford Blue variant #05162E
-    - Gunmetal Green variant #0C2A33
-    - Goldenrod #DAA520
-    - Whitesmoke #F5F5F5
-    - Dim Grey #696969  
-  - The site logo was chosen as an abstract representation of the moon, while a full-moon icon along with a single 'm' is used as the favicon for the site. 
-
-  ![Design](docs/design.png)
+With the database design now in place, actual models for the site could now be coded using the Django REST framework and the `dj-rest-auth` packages using the criteria listed above to inform the process.
 
 ### Features
-
 Each of the following implementations was added in response to the user stories and acceptance criteria above, details of which are provided below each feature heading for easy reference.
 
 #### Welcome Message
-> &bull; 
+The initial page of the API displays a brief welcome message confirming connected with the site and its name.
+
+![Welcome](docs/welcome.png)
 
 #### User model
+> &bull; 1.2 - User Story: as a Site Admin I want to be able to create and edit User Profiles so I can control user permissions on the frontend  
+&bull; 2.3 - User Story: as a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site  
+&bull; 2.4 - User Story: as a Site User I want to easily access a sign in page so I can use the full functionality of the site  
+&bull; 3.4 - User Story: as a Site User I want to be able to sign out from my account so that I know my account cannot be accessed by unauthorised persons
+
+![User](docs/fts-user.png)
 
 #### User Profile model
 > &bull; 1.2 - User Story: as a Site Admin I want to be able to create and edit User Profiles so I can control user permissions on the frontend  
-&bull; 1.7 - User Story: as a Site Admin I want to have access to search and filtering tools on the backend so I can find and edit particular data more easily 
+&bull; 1.7 - User Story: as a Site Admin I want to have access to search and filtering tools on the backend so I can find and edit particular data more easily  
+&bull; 5.5 - User Story: as a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio, and equipment details
+
+![UserProfile](docs/fts-userprofile.png)
 
 #### Equipment Profile model
 > &bull; 1.3 - User Story: as a Site Admin I want to be able to review and edit Equipment Profiles for users so I can details on the frontend  
-&bull; 1.7 - User Story: as a Site Admin I want to have access to search and filtering tools on the backend so I can find and edit particular data more easily 
+&bull; 1.7 - User Story: as a Site Admin I want to have access to search and filtering tools on the backend so I can find and edit particular data more easily  
+&bull; 5.5 - User Story: as a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio, and equipment details
+
+![Equipment](docs/fts-equipment.png)
 
 #### Photo model
 > &bull; 1.4 - User Story: as a Site Admin I want to be able to review and edit Photo uploads so I can allow and control images on the frontend  
 &bull; 1.7 - User Story: as a Site Admin I want to have access to search and filtering tools on the backend so I can find and edit particular data more easily  
-
-#### Comment model
-> &bull; 1.5 - User Story: as a Site Admin I want to be able to review and edit Comments for so I can allow and control comments on the frontend  
-&bull; 1.7 - User Story: as a Site Admin I want to have access to search and filtering tools on the backend so I can find and edit particular data more easily 
-
-#### Star model
-> &bull; 1.6 - User Story: as a Site Admin I want to be able to review and edit Star ratings (photo ratings) by users so I can allow and control star ratings on the frontend  
-&bull; 1.7 - User Story: as a Site Admin I want to have access to search and filtering tools on the backend so I can find and edit particular data more easily 
-
-
-#### Navbar & Toggler
-> &bull; 2.2 - User Story: as a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site   
-&bull; 2.3 - User Story: as a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site  
-&bull; 2.4 - User Story: as a Site User I want to easily access a sign in page so I can use the full functionality of the site   
-&bull; 3.1 - User Story: as a Site User I want view additional navigational links so that I can access those areas of the site only available to registered users    
-&bull; 3.3 - User Story: as a Site Visitor/User I want have a clear indication as to whether or not I am logged in/logged out so I can easily discern if I need to sign up/sign in before accessing certain pages    
-&bull; 3.4 - User Story: as a Site User I want to be able to sign out from my account so that I know my account cannot be accessed by unauthorised persons  
-
-![Navbar](docs/fts-navbar.png)
-
-- The Navbar component is rendered at launch then adjusts conditionally as the user navigates the site
-- Links provided to each page of the site for easy navigation
-- Links alter depending on signed-in/signed-out status
-- Navbar remains fixed to top of screen for constant access to links, even when scrolling
-- Navbar dropdown appears when signed-in and viewing 767px+ width to display links neatly
-- Navbar toggler appears at screen sizes <767px to preserve well-formatted layout
-- Navbar displays username and reusable Avatar component on dropdown when user is signed-in
-- Signout link restyled on toggler to continue displaying the username
-- Reusable Avatar component is hideen at screen <315px to preserve good formatting
-
-#### Home Page
-> &bull; 5.1 - User Story: as a Site Visitor/User I want to view all user photos from the home page so I can see the latest content when first accessing the site  
-&bull; 5.2 - User Story: as a Site User I want to be able to continously scroll through photos so that I don't have to navigate between and reload multiple pages  
-&bull; 5.3 - User Story: as a Site User I want to be able to search photos with keywords (title, feature, user, etc.) so I can view content specifically related to those keywords  
-&bull; 5.4 - User Story: as a Site User I want to be able to select an individual photo from the feed so I can view details, comments, and upvotes directly associated with that photo   
-&bull; 6.1 User Story: as a Site User I want to be able to upvote other users photos so that I can show my appreciation for their photography  
-&bull; 6.3 - User Story: as a Site User I want to view a feed of those photos I've upvoted so I have easy access to those posts I've shown a particular interest in  
-&bull; 6.4 - User Story: as a Site User I want to view a feed of those photos I've commented on so I have easy access to posts where I am involved in a discussion thread
-
-![Home](docs/fts-home.png)
-
-- Signed-out users will see a welcome message displayed as the page's header
-- Signed-in users will see feed filters and a desciption as the page's header
-- Both views use the adaptible Photo Feed page which can be called with different filters for different views
-- Anytime the photo feed is called it displays using a reponsive 'masonry' layout and infinite scroll component
-- The reusable Asset component is called while photos are loading in the form of a 'loading-dot' animation along with text of 'Loading images...' 
-- The Photo Feed page also renders a search bar just below the page header
-- Further filtering is achieved with the Filters component in the signed-in view
-- Each photo is rendered using a reusable Photo Card component which allows for the adding of stars and access to individual user profiles
-- Each photo can be clicked directly to direct the user to an individual page for the image outlining photo details (see [Photo Details](#photo-details) below)
-
-#### Sign Up/In
-> &bull; 2.3 - User Story: as a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site    
-&bull; 2.4 - User Story: as a Site User I want to easily access a sign in page so I can use the full functionality of the site    
-&bull; 3.2 - User Story: as a Site User I want to remain logged in to the site until I choose otherwise so that my experience is not interuppted by having to continously re-enter my username and password  
-
-![SignUpIn](docs/fts-signup-signin.png)
-
-- Simple forms allow the user to quickly enter details and sign up/sign in to the site
-- Links below each form help redirect the user if they have initially selected the inccorect access form 
-- Stylised success/error messages ('toasts') appear on clicking 'Submit' to provide immediate feedback from the form to the user
-- Field specific alerts let the user know of any specific issue with the data they have entered
-- JWTs are used to prevent the user from having to log in every 5 minutes or so 
-
-#### Upload/Edit Photo
-> &bull; 4.1 - User Story: as a Site User I want to be able to upload my own astrological photos to the site so that they are shared on the home page and commented on/upvoted by others  
+&bull; 4.1 - User Story: as a Site User I want to be able to upload my own astrological photos to the site so that they are shared on the home page and commented on/upvoted by others  
 &bull; 4.2 - User Story: as a Site User I want to include specific details such as keywords, date, time, location etc. with my uploaded photos so that those details can be displayed alongside the photo for the benefit of other users  
-&bull; 4.3 - User Story: as a Site User I want to be able to edit the details of any photo I have added so that I can correct mistakes or add new information if required  
-
-![UploadEdit](docs/fts-upload-edit.png)
-
-- Image placeholder implemented with reusable Asset component to allow preview once image is selected by user
-- Different field types (file, text, textarea, date, time) direct the user as to what input to provide
-- Fields relating to equipment autofill according to details added by the user in the gear proile (see [Gear/Account Detail Forms](#gearaccount-detail-forms) below)
-- Edit form prevents user fomr changing image, only details, so that stars and commments remain relevant
-- Stylised success/upload/error messages ('toasts') appear on clicking 'Submit' to provide immediate feedback from the form to the user
-- Field specific alerts let the user know of any specific issue with the data they have entered
-
-#### Photo Details
-> &bull; 4.2 - User Story: as a Site User I want to include specific details such as keywords, date, time, location etc. with my uploaded photos so that those details can be displayed alongside the photo for the benefit of other users  
 &bull; 4.3 - User Story: as a Site User I want to be able to update the details of any photo I have added so that I can correct mistakes or add new information if required  
 &bull; 4.4 - User Story: as a Site User I want to be able to delete any photo I have added so that I can remove my photos from the site if I so desire  
 &bull; 4.5 - Dev Goal: write defensive code to prevent anyone from accessing the ability to update/delete posts which were not specifically uploaded by them  
-&bull; 6.1 User Story: as a Site User I want to be able to upvote other users photos so that I can show my appreciation for their photography    
+&bull; 5.3 - User Story: as a Site User I want to be able to search photos with keywords (title, feature, user, etc.) so I can view content specifically related to those keywords  
+&bull; 5.4 - User Story: as a Site User I want to be able to select an individual photo from the feed so I can view details, comments, and upvotes directly associated with that photo  
 
-![PhotoDetails](docs/fts-photo-details.png)
+![Photo](docs/fts-photo.png)
 
-- The reusable PhotoCard component renders the image along with various details entered by the user
-- As with the home/profile pages, signed-in non-owners can click to add a star to the image
-- If the photo belongs to the sign-in user, 'Edit' and 'Delete' buttons will also appear above the image
-- Selecting 'Edit' redirects the user to the relevant form with pre-populated fields for the photo
-- Selecting 'Delete' will display a confirmation modal to help prevent accidental deletion
+#### Comment model
+> &bull; 1.5 - User Story: as a Site Admin I want to be able to review and edit Comments for so I can allow and control comments on the frontend  
+&bull; 1.7 - User Story: as a Site Admin I want to have access to search and filtering tools on the backend so I can find and edit particular data more easily  
+&bull; 6.2 User Story: as a Site User I want to be able to comment on other users photos so that I can ask questions and/or start a discussion about the photo  
+&bull; 6.4 - User Story: as a Site User I want to view a feed of those photos I've commented on so I have easy access to posts where I am involved in a discussion thread
 
-#### Photo Comments
-> &bull; 6.2 User Story: as a Site User I want to be able to comment on other users photos so that I can ask questions and/or start a discussion about the photo
+![Comment](docs/fts-comment.png)
 
-![PhotoComments](docs/fts-photo-comments.png)
+#### Star model
+> &bull; 1.6 - User Story: as a Site Admin I want to be able to review and edit Star ratings (photo ratings) by users so I can allow and control star ratings on the frontend  
+&bull; 1.7 - User Story: as a Site Admin I want to have access to search and filtering tools on the backend so I can find and edit particular data more easily  
+&bull; 6.1 User Story: as a Site User I want to be able to upvote other users photos so that I can show my appreciation for their photography  
+&bull; 6.3 - User Story: as a Site User I want to view a feed of those photos I've upvoted so I have easy access to those posts I've shown a particular interest in
 
-- The resuable Comment component renders a comment form and all user comments below the related image
-- Clicking the 'add' button is not possible until text has actually been added to the form
-- Adding a comment causes a Comment component with the relevant info to immediately display below the Add Comment form
-- Comments are displayed with the reusable Avatar component allowing access to that user's profile
-- Clicking 'Edit' below an owned comment caused the form to render in place so changes can be made
-
-#### Profile
-> &bull; 5.5 - User Story: as a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details 
-
-![Profile](docs/fts-profile.png)
-
-- A profile specific avatar is displayed using the reusable Avatar component
-- Personal and equipment details of the particular user are also displayed as a header
-- As with the home page above, a filtered photo feed (specific to the displayed user) is used to render the rest of the page
-- The reusable Asset component is called while photos are loading in the form of a 'loading-dot' animation along with text of 'Loading images...' 
-- As before, each photo is rendered using a reusable Photo Card component which allows for the adding of stars and access to an individual page for the image outlining details (see [Photo Details](#photo-details) above)
-
-#### Gear/Account Detail Forms
-> &bull; 5.5 - User Story: as a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details  
-
-![GearAccount](docs/fts-gear-account.png)
-
-- Gear form allows user to set their favoured lens and camera along with any other equipment
-- Gear info set using this form is displayed on the user's profile and auto-filled in the upload form
-- Account form allows user to update personal image in reusable Avatar component as well as name and personal details
-- Account info set reusing this form is displayed on the user's profile
-- Stylised success/error messages ('toasts') appear on clicking 'Save' to provide immediate feedback from the form to the user
-- Field specific alerts let the user know of any specific issue with the data they have entered 
+![Star](docs/fts-star.png) 
 
 #### 404 Error Page
 
 ![404](docs/fts-404.png)
 
-- The 404 page displays when the user tries to access a non-existent page
-- This page uses the reusable Asset component to display the no-results.png image alongside info text
 
 ### Features to be implemented
 
@@ -343,39 +240,39 @@ The following features have been identified as long-term goals which bring value
 #### Technologies Used
 In order to code and design these features and components the following technologies were utilised:
 
-- Dependencies
-  - axios: 0.21.4
-  - bootstrap: 4.6.0
-  - jwt-decode: 3.1.2
-  - moment: 2.30.1
-  - node: 16.20.2
-  - react: 17.0.2
-  - react-bootstrap: 2.10.0
-  - react-dom: 17.0.2
-  - react-icons: 5.0.1
-  - react-infinite-scroll-component: 6.1.0
-  - react-moment: 1.1.3
-  - react-responsive-masonry: 2.1.7
-  - react-router-dom: 5.3.0
-  - react-scripts: 4.0.3
-  - react-toastify: 8.1.0
-  - web-vitals: 1.1.2
-- [Node](https://nodejs.org/en)
+- Libraries
+  - asgiref==3.3.4
+  - cloudinary==1.25.0
+  - dj-rest-auth==2.1.9
+  - dj-database-url==0.5.0
+  - Django==3.2.4
+  - django-allauth==0.44.0
+  - django-cloudinary-storage==0.3.0
+  - django-cors-headers==4.3.0
+  - django-filter==2.4.0
+  - djangorestframework==3.12.4
+  - djangorestframework-simplejwt==4.7.2
+  - gunicorn==20.1.0
+  - oauthlib==3.1.1
+  - Pillow==9.2.0
+  - psycopg2-binary==2.9.9
+  - PyJWT==2.1.0
+  - python3-openid==3.2.0
+  - pytz==2021.1
+  - requests==2.31
+  - requests-oauthlib==1.3.0
+  - sqlparse==0.4.1
+  - urllib3==1.26.15
+- [Django REST]()
   - Used as package manager to install dependencies
-- [ReactJS](https://react.dev/)
-  - Used as the JavaScript library in the development of this project
+- [Python]()
+  - Used as the main coding language in the backend development of this project
 - [Heroku](https://heroku.com)
   - Used as the cloud-based deployment platform for this project
 - [ElephantSQL](https://elephantsql.com)
   - Used as the database hosting service
-- HTML
-  - Used for smaller static elements
-- [React Bootstrap](https://react-bootstrap.netlify.app/)
-  - Used as the main means of design layout and formatting throughout the site
-- CSS
-  - Used to modify Bootstrap behaviour where required and create additional custom stylings
 
-#### Packages Used
+#### Packages Used (front & backend)
 - [Gitpod](https://gitpod.io) used to code the site and transfer files between the editor and the repository
 - [GitHub](https://github.com) used to store the files for this project
 - [Cacoo](https://cacoo.com) used to develop the wireframe models for the site design
@@ -391,8 +288,6 @@ In order to code and design these features and components the following technolo
 - PowerPoint, MS Paint, and the Windows Photo app used to produce image files for documentation
 
 #### Reference Materials
-- [Rescript post](https://forum.rescript-lang.org/t/addeventlistener-for-window-resize/1254) by [Ferdinand Steenkamp](https://github.com/Ferdzzzzzzzz) referenced for creating `useViewportWidth()` hook 
-- Documentation for similar project by [Asia Wi](https://github.com/AsiaWi) referenced frequently when creating the READ.md and TESTING.md files on both frontend and backend repos
 - [Code Institute](https://codeinstitute.net/) course materials and walkthrough projects provided many reference points for implementing features of this project
 - Resources used are directly referenced within code where appropriate
 
@@ -419,7 +314,7 @@ Manual and automated testing undertaken for this project can be viewed in the se
 
 ## Deployment  !!! TO BE UPDATED !!!
 
-### Heroku Deployment
+### Heroku Deployment (frontend & backend)
 This site was deployed to and is currently [hosted on the Heroku platform](https://moonshot-13d14b7a6fbd.herokuapp.com/). The steps for deploying to Heroku, using ElephantSQL as the database host, are as follows:
 
 #### Cloudinary Setup
