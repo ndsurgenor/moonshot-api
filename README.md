@@ -194,7 +194,7 @@ The initial page of the API displays a brief welcome message confirming connecte
 
 - A User Profile model instance is created automatically whenever a user signs up/is created using the User model
 - The User Profile model is accessed by appending ['/user-profiles/'](https://moonshot-api-ff76437bf02f.herokuapp.com/user-profiles/) to the main API url; an individual record of this model is accessed by also appending the relevant id
-- User Profile admin access id achieved by appending ['/admin/user_profiles/'](https://moonshot-api-ff76437bf02f.herokuapp.com/admin/user_profiles/) to the main API url, but requires admin privileges to access  
+- User Profile admin access is achieved by appending ['/admin/user_profiles/'](https://moonshot-api-ff76437bf02f.herokuapp.com/admin/user_profiles/) to the main API url, but requires admin privileges to access  
 - The model uses GET and PUT views to list and update user profiles respectively
 - In addition to those shown in the diagram above, 'is_owner' and 'photo_upload_count' fields have been added to the model through use of a serializer
 - A default avatar is added to every User profile by means of connection to the Cloudinary API
@@ -209,7 +209,8 @@ The initial page of the API displays a brief welcome message confirming connecte
 ![Equipment](docs/mds-equipment.png)
 
 - An Equipment Profile model instance is created automatically whenever a user signs up/is created using the User model
-- The Equipment Profile model is accessed by appending ['/equipment-profiles/'](https://moonshot-api-ff76437bf02f.herokuapp.com/equipment-profiles/) to the main API url; an individual record of this model is accessed by also appending the relevant id 
+- The Equipment Profile model is accessed by appending ['/equipment-profiles/'](https://moonshot-api-ff76437bf02f.herokuapp.com/equipment-profiles/) to the main API url; an individual record of this model is accessed by also appending the relevant id
+- Equipment Profile admin access is achieved by appending ['/admin/equipment_profiles/'](https://moonshot-api-ff76437bf02f.herokuapp.com/admin/equipment_profiles/) to the main API url, but requires admin privileges to access
 - The model uses GET and PUT views to list and update equipment profiles respectively
 - In addition to those fields shown in the diagram above, an 'is_owner' field has been added to the model through use of a serializer
 - Filters have been added to allow filtering by user
@@ -229,7 +230,8 @@ The initial page of the API displays a brief welcome message confirming connecte
 
 ![Photo](docs/mds-photo.png)
 
-- The Photo model is accessed by appending ['/photos/'](https://moonshot-api-ff76437bf02f.herokuapp.com/photos/) to the main API url; an individual record of this model is accessed by also appending the relevant id 
+- The Photo model is accessed by appending ['/photos/'](https://moonshot-api-ff76437bf02f.herokuapp.com/photos/) to the main API url; an individual record of this model is accessed by also appending the relevant id
+- Photo admin access is achieved by appending ['/admin/photos/'](https://moonshot-api-ff76437bf02f.herokuapp.com/admin/photos/) to the main API url, but requires admin privileges to access 
 - The model uses GET, POST, PUT and DELETE views to list, create, update and delete photos respectively
 - Variables have been added to the 'main_feature' field to limit permitted values
 - In addition to those shown in the diagram above, 'user', 'user_avatar', 'is_owner', 'star_id', 'star_count' and 'comment_count' fields have been added to the model through use of a serializer
@@ -246,7 +248,8 @@ The initial page of the API displays a brief welcome message confirming connecte
 
 ![Comment](docs/mds-comment.png)
 
-- The Comment model is accessed by appending ['/comments/'](https://moonshot-api-ff76437bf02f.herokuapp.com/comments/) to the main API url; an individual record of this model is accessed by also appending the relevant id 
+- The Comment model is accessed by appending ['/comments/'](https://moonshot-api-ff76437bf02f.herokuapp.com/comments/) to the main API url; an individual record of this model is accessed by also appending the relevant id
+- Comment admin access is achieved by appending ['/admin/comments/'](https://moonshot-api-ff76437bf02f.herokuapp.com/admin/comments/) to the main API url, but requires admin privileges to access 
 - The model uses GET, POST, PUT and DELETE views to list, create, update and delete comments respectively
 - In addition to those shown in the diagram above, 'user_id', 'user_avatar' and 'is_owner' fields have been added to the model through use of a serializer
 - Filters have been added to the model to allow filtering by assocaited users and photos 
@@ -261,7 +264,8 @@ The initial page of the API displays a brief welcome message confirming connecte
 
 ![Star](docs/mds-star.png)
 
-- The Star model is accessed by appending ['/stars/'](https://moonshot-api-ff76437bf02f.herokuapp.com/stars/) to the main API url; an individual record of this model is accessed by also appending the relevant id 
+- The Star model is accessed by appending ['/stars/'](https://moonshot-api-ff76437bf02f.herokuapp.com/stars/) to the main API url; an individual record of this model is accessed by also appending the relevant id
+- Star admin access is achieved by appending ['/admin/stars/'](https://moonshot-api-ff76437bf02f.herokuapp.com/admin/stars/) to the main API url, but requires admin privileges to access 
 - The model uses GET, POST, PUT and DELETE views to list, create, update and delete stars respectively
 
 ### Features to be implemented
