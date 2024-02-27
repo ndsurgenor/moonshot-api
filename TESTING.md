@@ -85,7 +85,7 @@ Admin can delete star from photo|[1.6](README.md#milestone-1---api--admin-functi
 
 ## PEP8 Validator Testing
 
-All files have been passed through the [Code Institute PEP8 Linter](https://pep8ci.herokuapp.com/). The only warnings given were for the settings.py file which contains a small number of long lines (i.e. greater than 80 characters) under AUTH_PASSWORD_VALIDATORS; as this is code implemented by Django itself at setup, these lines will be left unchanged. 
+All files have been passed through the [Code Institute PEP8 Linter](https://pep8ci.herokuapp.com/). The only warnings given were for the settings.py file which contains a small number of long lines (i.e. greater than 80 characters); as this is from code implemented by Django itself, these lines will be left unchanged. 
 
 ## Bugs
 
@@ -96,7 +96,7 @@ There are no known bugs in the current deployment of the site. A number of bugs 
 Data|Database won't migrate|After creating the Stars model and serializer, attempted to run migrations using `python manage.py makemigrations` and `python manage.py migrate`. Terminal displays a `UNIQUE constraint not valid` message.|<ul><li>Delete migrations</li><li>Delete and recode Stars app/model</li><li>Rerun migrations</li></ul>|Fixed
 Data|Photos POST function creating IntegrityError|When trying to create upload a photo using the POST function the message `django.db.utils.IntegrityError: NOT NULL constraint failed: photos_photo.user_id` appears|<ul><li>Correct syntax of `def perform_create()` method (incorrectly names as `def create_photo`)</li></ul>|Fixed
 Connection|API not accepting data from Frontend|When attempting to sign up a new user via the frontend, an error is logged to the console regarding blocked CORS policy and the React 'white screen' is shown|<ul><li>Added `CLIENT_ORIGIN` and `CLIENT_ORIGIN_DEV` variables to the env.py file</li><li>Added code block to settings.py (see under table)</li></ul>|Fixed
-Connection|API not sending `profile_id` and `profile_image` variables|When trying to display a user avatar and receive their id on the frontend, a broken image link is shown in the navbar along with an undefined value in developer tools|<ul><li>Removed underscore from `user_profile` and `equipment_profile`in all serializer files</li></ul>|Fixed
+Connection|API not sending `profile_id` and `profile_image` variables|When trying to display a user avatar and receive their id on the frontend, a broken image link is shown in the navbar along with an undefined value in developer tools|<ul><li>Removed underscore from `user_profile` and `equipment_profile` in all serializer files</li></ul>|Fixed
 Data|Photo Upload/Edit Form not saving details|Date and Time fields displaying errors within the frontend console with regard to null values|<ul><li>Removed `null="True"` on date and time fields in photos model</li><li>Added relevant defaults to date and time fields</li></ul>|Fixed
 
 ``` python
