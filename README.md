@@ -334,26 +334,21 @@ In order to code and design these features and components the following technolo
 - [Code Institute](https://codeinstitute.net/) course materials and walkthrough projects provided many reference points for implementing features of this project
 - Resources used are directly referenced within code where appropriate
 
-## Testing  !!! TO BE UPDATED !!!
+## Testing
 
 Manual and automated testing undertaken for this project can be viewed in the separate [TESTING.md file](TESTING.md) (_Use CTRL + Click to this or any of the following links in a new tab/window_). You can also navigate to a specific area of the file by selecting one of the headings below:
 
-### Testing Contents  !!! TO BE UPDATED !!!
-- [Introduction](TESTING.md#eastst---testing)
+### Testing Contents
+- [Introduction](TESTING.md#moonshot-api--backend-testing)
 - [Manual Testing](TESTING.md#manual-testing)
-    - [Navigation](TESTING.md#navigation)
-    - [Responsiveness](TESTING.md#responsiveness)
-    - [Authentication](TESTING.md#authentication)
-    - [CRUD Functionality](TESTING.md#crud-functionality)
-<!-- - [Automated Testing](TESTING.md#automated-testing) -->
-- [Validator Testing](TESTING.md#validator-testing)
-    - [W3C](TESTING.md#w3c)
-    - [PEP8](TESTING.md#pep8)
-    - [JSHint](TESTING.md#jshint)
-- [Accessibility & Performance](TESTING.md#accessibility--performance)
-    - [WAVE](TESTING.md#wave)
-    - [Lighthouse](TESTING.md#lighthouse)
-- [Bugs](TESTING.md#bugs) -->
+    - [User Administration](TESTING.md#user-administration)
+    - [GPPD (CRUD) Functionality](TESTING.md#get-post-put--delete-crud-functionality)
+        - [User & Equipment Profile Tests](TESTING.md#user--equipment-profile-tests)
+        - [Photo Tests](TESTING.md#photo-tests)
+        - [Comment Tests](TESTING.md#comment-tests)
+        - [Star Tests](TESTING.md#star-tests)
+- [PEP8 Validator Testing](TESTING.md#pep8-validator-testing)
+- [Bugs](TESTING.md#bugs)
 
 ## Deployment
 

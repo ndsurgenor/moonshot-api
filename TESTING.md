@@ -14,7 +14,6 @@ _Note: this document only contains testing info for the moonshot frontend site_
         - [Photo Tests](#photo-tests)
         - [Comment Tests](#comment-tests)
         - [Star Tests](#star-tests)
-<!-- - [Automated Testing](#automated-testing) -->
 - [PEP8 Validator Testing](#pep8-validator-testing)
 - [Bugs](#bugs)
 
@@ -72,7 +71,7 @@ Admin can delete photo|[1.4](README.md#milestone-1---api--admin-functionality "a
 **Test**|**Ref(s)**|**Steps**|**Expected**|**Result**
 -----|:-----:|-----|-----|:-----:
 Admin can add comment to photo|[1.5](README.md#milestone-1---api--admin-functionality "As a Site Admin I want to be able to review and edit Comments so I can allow and control comments on the frontend")|<ol><li>Click 'Add' beside 'Comments'</li><li>Scroll down and complete all form fields with valid details</li><li>Click 'Save' button</li></ol>|<ul><li>Admin directed back to list of comments</li><li>A message saying "The comment {comment name} was added successfully" appears above the comment list</li><li>Newly submitted comment appears at top of list</li></ul>|Pass
-Admin cannot add 'blank comment' to photo[1.5](README.md#milestone-1---api--admin-functionality "As a Site Admin I want to be able to review and edit Comments so I can allow and control comments on the frontend")|<ol><li>Click 'Add' beside 'Comments'</li><li>Scroll down and complete all form fields but leave 'Content' blank</li><li>Click 'Save' button</li></ol>|<ul><li>Form will not submit</li><li>A message saying "This field is required" appears on the form</li></ul>|Pass
+Admin cannot add 'blank comment' to photo|[1.5](README.md#milestone-1---api--admin-functionality "As a Site Admin I want to be able to review and edit Comments so I can allow and control comments on the frontend")|<ol><li>Click 'Add' beside 'Comments'</li><li>Scroll down and complete all form fields but leave 'Content' blank</li><li>Click 'Save' button</li></ol>|<ul><li>Form will not submit</li><li>A message saying "This field is required" appears on the form</li></ul>|Pass
 Admin can edit comment|[1.5](README.md#milestone-1---api--admin-functionality "As a Site Admin I want to be able to review and edit Comments so I can allow and control comments on the frontend")|<ol><li>Click 'Comments' link</li><li>Click on an entry from the displayed comment list</li><li>Scroll down and update form with valid details</li><li>Click 'Save' button</li></ol>|<ul><li>Admin directed back to comment list</li><li>A message saying "The comment {comment name} was changed successfully" appears above the comment list</li></ul>|Pass
 Admin cannot edit comment to be blank|[1.5](README.md#milestone-1---api--admin-functionality "As a Site Admin I want to be able to review and edit Comments so I can allow and control comments on the frontend")|<ol><li>Click 'Comments' link</li><li>Click on an entry from the displayed comment list</li><li>Scroll down and update form so that 'Content' is blank</li><li>Click 'Save' button</li></ol>|<ul><li>Form will not submit</li><li>A message saying "This field is required" appears on the form</li></ul>|Pass
 Admin can delete comment|[1.5](README.md#milestone-1---api--admin-functionality "As a Site Admin I want to be able to review and edit Comments so I can allow and control comments on the frontend")|<ol><li>Click 'Comments' link</li><li>Scroll down and select tick box beside comment to be deleted</li><li>Select 'Delete selected comments' from Action dropdown above the comment list</li><li>Click 'Go' button</li><li>Scroll down and click 'Yes I'm sure' button</li></ol>|<ul><li>Admin directed back to list of comments</li><li>A message saying "Successfully deleted 1 comment" appears above the comment list</li><li>Deleted comment no longer appears on list</li></ul>|Pass
@@ -83,14 +82,6 @@ Admin can delete comment|[1.5](README.md#milestone-1---api--admin-functionality 
 -----|:-----:|-----|-----|:-----:
 Admin can add star to photo|[1.6](README.md#milestone-1---api--admin-functionality "As a Site Admin I want to be able to review and edit Star ratings (photo ratings) by users so I can allow and control star ratings on the frontend")|<ol><li>Click 'Add' beside 'Stars'</li><li>Scroll down and select a user and photo</li><li>Click 'Save' button</li></ol>|<ul><li>Admin directed back to list of stars</li><li>A message saying "The star {star name} was added successfully" appears above the star list</li><li>Newly submitted star appears at top of list</li></ul>|Pass
 Admin can delete star from photo|[1.6](README.md#milestone-1---api--admin-functionality "As a Site Admin I want to be able to review and edit Star ratings (photo ratings) by users so I can allow and control star ratings on the frontend")|<ol><li>Click 'Stars' link</li><li>Scroll down and select tick box beside star to be deleted</li><li>Select 'Delete selected stars' from Action dropdown above the star list</li><li>Click 'Go' button</li><li>Scroll down and click 'Yes I'm sure' button</li></ul>|<li>Admin directed back to list of stars</li><li>A message saying "Successfully deleted 1 star" appears above the comment list</li><li>Deleted star no longer appears on list</li></ul>|Pass
-
-<!-- ## Automated Testing
-
-A number of automated tests have been written to provide additional validation alongside those manual tests which check for a user's ability to view the booking section, depending on whether or not they are authenticated, as well as attempts to update/delete bookings which do not belong to a user.
-
-All of these tests are found within the [tests.py](booking_sys/tests.py) file in the repository.
-
-![Automated](static/images/testing/testing-automated.png) -->
 
 ## PEP8 Validator Testing
 
