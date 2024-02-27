@@ -9,7 +9,7 @@ from .serializers import PhotoSerializer
 class PhotoList(generics.ListCreateAPIView):
     """
     GET and POST functionality for Photos
-    """ 
+    """
     serializer_class = PhotoSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Photo.objects.annotate(
@@ -19,7 +19,7 @@ class PhotoList(generics.ListCreateAPIView):
     filter_backends = [
         filters.SearchFilter,
         DjangoFilterBackend,
-        filters.OrderingFilter,      
+        filters.OrderingFilter,
     ]
     search_fields = [
         'user__username',

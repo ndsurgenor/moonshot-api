@@ -10,13 +10,15 @@ class PhotoSerializer(serializers.ModelSerializer):
     user = serializers.ReadOnlyField(source='user.username')
     is_owner = serializers.SerializerMethodField()
     user_id = serializers.ReadOnlyField(source='user.userprofile.id')
-    user_avatar = serializers.ReadOnlyField(source='user.userprofile.avatar.url')
+    user_avatar = serializers.ReadOnlyField(
+        source='user.userprofile.avatar.url'
+    )
     star_id = serializers.SerializerMethodField()
     star_count = serializers.ReadOnlyField()
     comment_count = serializers.ReadOnlyField()
 
     # Ensures photo upload is less than 4MB in size
-    # and height/width are between 500-7680px 
+    # and height/width are between 500-7680px
     def validate_photo(self, value):
         size = value.size
         height = value.image.height
@@ -33,7 +35,7 @@ class PhotoSerializer(serializers.ModelSerializer):
         if width < 500 or width > 7680:
             raise serializers.ValidationError(
                 'Image width must be between 500-7680 pixels'
-                ) 
+                )
         return value
 
     def get_is_owner(self, obj):
@@ -49,7 +51,6 @@ class PhotoSerializer(serializers.ModelSerializer):
             ).first()
             return star.id if star else None
         return None
-
 
     class Meta:
         model = Photo

@@ -7,5 +7,5 @@ MAIN_FEATURES = [
     ('nightscape', 'Nightscape'),
     ('planet', 'Planet'),
     ('stars', 'Stars'),
-    ('other', '(Other)'),       
+    ('other', '(Other)'),
 ]

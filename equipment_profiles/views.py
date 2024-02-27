@@ -15,7 +15,7 @@ class EquipmentProfileList(generics.ListAPIView):
     filter_backends = [
         filters.SearchFilter,
         DjangoFilterBackend,
-        filters.OrderingFilter,      
+        filters.OrderingFilter,
     ]
     search_fields = [
         'user__username',
@@ -24,7 +24,7 @@ class EquipmentProfileList(generics.ListAPIView):
         'other_equipment',
     ]
     filterset_fields = [
-        'user',     
+        'user',
     ]
     ordering_fields = [
         'created_at',

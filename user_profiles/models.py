@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
+
 class UserProfile(models.Model):
     """
     Creates a user profile automatically when a new user signs up
@@ -13,7 +14,7 @@ class UserProfile(models.Model):
     details = models.TextField(blank=True)
     avatar = models.ImageField(
         upload_to='images/',
-        default = '../default_avatar'
+        default='../default_avatar'
     )
 
     class Meta:
@@ -27,5 +28,6 @@ class UserProfile(models.Model):
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
+
 
 post_save.connect(create_user_profile, sender=User)

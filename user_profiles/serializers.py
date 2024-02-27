@@ -14,7 +14,6 @@ class UserProfileSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.user
 
-
     class Meta:
         model = UserProfile
         fields = [
@@ -26,5 +25,5 @@ class UserProfileSerializer(serializers.ModelSerializer):
             'details',
             'avatar',
             'is_owner',
-            'photo_upload_count',            
+            'photo_upload_count',
         ]

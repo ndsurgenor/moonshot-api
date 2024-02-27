@@ -9,7 +9,6 @@ class StarSerializer(serializers.ModelSerializer):
     """
     user = serializers.ReadOnlyField(source='user.username')
 
-
     class Meta:
         model = Star
         fields = [
@@ -18,7 +17,7 @@ class StarSerializer(serializers.ModelSerializer):
             'photo',
             'created_at',
         ]
-    
+
     def create(self, validated_data):
         try:
             return super().create(validated_data)
