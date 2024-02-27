@@ -10,11 +10,10 @@ _Note: this document only contains testing info for the moonshot frontend site_
 - [Manual Testing](#manual-testing)
     - [User Administration](#user-administration)
     - [GPPD (CRUD) Functionality](#get-post-put--delete-crud-functionality)
+        - [User & Equipment Profile Tests](#user--equipment-profile-tests)
         - [Photo Tests](#photo-tests)
         - [Comment Tests](#comment-tests)
         - [Star Tests](#star-tests)
-        - [Gear & Account Detail Tests](#gear--account-detail-tests)
-        - [Filter Tests](#filter-tests)
 <!-- - [Automated Testing](#automated-testing) -->
 - [PEP8 Validator Testing](#pep8-validator-testing)
 - [Bugs](#bugs)
@@ -43,6 +42,15 @@ These tests determine if an admin is able to successfully - or otherwise - creat
 
 - Required fields (*) are not left blank
 - Invalid values/formats have not been added to a field
+
+#### User & Equipment Profile Tests
+
+**Test**|**Ref(s)**|**Steps**|**Expected**|**Result**
+-----|:-----:|-----|-----|:-----:
+Admin can edit User Profile|[1.2](README.md#milestone-1---api--admin-functionality "As a Site Admin I want to be able to create and edit User Profiles so I can control user permissions on the frontend")|<ol><li>Click 'User Profiles' link</li><li>Click on an entry from the displayed user profiles list</li><li>Scroll down and update form with valid details</li><li>Click 'Save' button</li></ol>|<ul><li>Admin directed back to list of user profiles</li><li>A message saying "The user profile {user profile} was changed successfully" appears above the user profile list</li></ul>|Pass
+Admin can update user avatar|[1.2](README.md#milestone-1---api--admin-functionality "As a Site Admin I want to be able to create and edit User Profiles so I can control user permissions on the frontend")|<ol><li>Click 'User Profiles' link</li><li>Click on an entry from the displayed user profiles list</li><li>Scroll down and click 'Choose file' button</li><li>Select a valid image file</li><li>Click 'Save' button</li></ol>|<ul><li>Admin directed back to list of user profiles</li><li>A message saying "The user profile {user profile} was changed successfully" appears above the user profile list</li></ul>|Pass
+Admin cannot change avatar to non-image file|[1.2](README.md#milestone-1---api--admin-functionality "As a Site Admin I want to be able to create and edit User Profiles so I can control user permissions on the frontend")|<ol><li>Click 'User Profiles' link</li><li>Click on an entry from the displayed user profiles list</li><li>Scroll down and click 'Choose file' button</li><li>Select a non-image file</li><li>Click 'Save' button</li></ol>|<ul><li>A message saying "Upload a valid image. The file you uploaded was either not an image or a corrupted image" appears on the form</li></ul>|Pass
+Admin can edit Equipment profile|[1.3](README.md#milestone-1---api--admin-functionality "As a Site Admin I want to be able to review and edit Equipment Profiles for users so I can details on the frontend")|<ol><li>Click 'Equipment Profiles' link</li><li>Click on an entry from the displayed equipment profiles list</li><li>Scroll down and update form with valid details</li><li>Click 'Save' button</li></ol>|<ul><li>Admin directed back to list of equipment profiles</li><li>A message saying "The equipment profile {equipment profile} was changed successfully" appears above the equipment profile list</li></ul>|Pass
 
 #### Photo Tests
 
@@ -75,23 +83,6 @@ Admin can delete comment|[1.5](README.md#milestone-1---api--admin-functionality 
 -----|:-----:|-----|-----|:-----:
 Admin can add star to photo|[1.6](README.md#milestone-1---api--admin-functionality "As a Site Admin I want to be able to review and edit Star ratings (photo ratings) by users so I can allow and control star ratings on the frontend")|<ol><li>Click 'Add' beside 'Stars'</li><li>Scroll down and select a user and photo</li><li>Click 'Save' button</li></ol>|<ul><li>Admin directed back to list of stars</li><li>A message saying "The star {star name} was added successfully" appears above the star list</li><li>Newly submitted star appears at top of list</li></ul>|Pass
 Admin can delete star from photo|[1.6](README.md#milestone-1---api--admin-functionality "As a Site Admin I want to be able to review and edit Star ratings (photo ratings) by users so I can allow and control star ratings on the frontend")|<ol><li>Click 'Stars' link</li><li>Scroll down and select tick box beside star to be deleted</li><li>Select 'Delete selected stars' from Action dropdown above the star list</li><li>Click 'Go' button</li><li>Scroll down and click 'Yes I'm sure' button</li></ul>|<li>Admin directed back to list of stars</li><li>A message saying "Successfully deleted 1 star" appears above the comment list</li><li>Deleted star no longer appears on list</li></ul>|Pass
-
-#### Gear & Account Detail Tests
-
-**Test**|**Ref(s)**|**Steps**|**Expected**|**Result**
------|:-----:|-----|-----|:-----:
-
-User can edit their gear profile|[5.5](README.md#milestone-5---home--profile-pages "As a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details")|<ol><li>Navigate to 'Gear' page</li><li>Update form fields with any valid data</li><li>Click 'Save' button</li></ol>|<ul><li>Success toast informs user that update was successful</li><li>User redirected to their Profile page</li><li>Items under 'Main Gear' updated with new values</li></ul>|Pass
-
-User can cancel gear edit|[5.5](README.md#milestone-5---home--profile-pages "As a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details")|<ol><li>Navigate to 'Gear' page</li><li>Update form fields with any valid data</li><li>Click 'Cancel' button</li></ol>|<ul><li>User redirected to their Profile page</li><li>Details under 'Main Gear' remain unchanged</li></ul>|Pass
-
-User can update their avatar|[5.5](README.md#milestone-5---home--profile-pages "As a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details")|<ol><li>Navigate to 'Account' page</li><li>Click 'Choose File' button</li><li>Select a valid image file</li><li>Click 'Save' button</li></ol>|<ul><li>User redirected to their Profile page</li><li>Avatar displayed with updated image</li></ul>|Pass
-
-User cannot save if avatar is not image file|[5.5](README.md#milestone-5---home--profile-pages "As a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details")|<ol><li>Navigate to 'Account' page</li><li>Click 'Choose File' button</li><li>Select a non-image file</li><li>Click 'Save' button</li></ol>|<ul><li>Error toast informs user of the problem</li></ul>|Pass
-
-User can edit Name and Personal Details|[5.5](README.md#milestone-5---home--profile-pages "As a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details")|<ol><li>Navigate to 'Account' page</li><li>Update 'Name' and 'Personal Detail' fields with any valid data</li><li>Click 'Save' button</li></ol>|<ul><li>Success toast informs user that update was successful</li><li>User redirected to their Profile page</li><li>Updated details displayed beside avatar</li></ul>|Pass
-
-User can cancel account edit|[5.5](README.md#milestone-5---home--profile-pages "As a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details")|<ol><li>Navigate to 'Account' page</li><li>Update avatar/form fields with any valid data</li><li>Click 'Cancel' button</li></ol>|<ul><li>User redirected to their Profile page</li><li>Details under Profile remain unchanged</li></ul>|Pass
 
 <!-- ## Automated Testing
 
