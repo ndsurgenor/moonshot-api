@@ -8,73 +8,22 @@ _Note: this document only contains testing info for the moonshot frontend site_
 ## Table Of Contents
 - [Introduction](#eastst---testing)
 - [Manual Testing](#manual-testing)
-    - [Navigation](#navigation)
-    - [Responsiveness](#responsiveness)
     - [Authentication](#authentication)
     - [GPPD (CRUD) Functionality](#get-post-put--delete-crud-functionality)
-        -[Photo Tests](#photo-tests)
-        -[Comment Tests](#comment-tests)
-        -[Star Tests](#star-tests)
-        -[Gear & Account Detail Tests](#gear--account-detail-tests)
-        -[Filter Tests](#filter-tests)
+        - [Photo Tests](#photo-tests)
+        - [Comment Tests](#comment-tests)
+        - [Star Tests](#star-tests)
+        - [Gear & Account Detail Tests](#gear--account-detail-tests)
+        - [Filter Tests](#filter-tests)
 <!-- - [Automated Testing](#automated-testing) -->
-- [Validator Testing](#validator-testing)
+- [PEP8 Validator Testing](#pep8-validator-testing)
     - [W3C](#w3c)
     - [Quick lint JS](#quick-lint-js)
-- [Accessibility & Performance](#accessibility--performance)
-    - [Lighthouse](#lighthouse)
 - [Bugs](#bugs)
 
 ## Manual Testing
 
 The following sections list a number of manual tests undertaken to ensure the site operates according to details listed under [Scope](README.md#scope) and [Structure](README.md#structure) in the README file. Specific dev goals/user stories can viewed (where appropriate) by hovering over the numbers listed under 'Ref(s)' in the tables below; clicking these links will open the relevant section in the README file.
-
-### Navigation
-
-These tests ensure that a user can successfully navigate the site using the provided navbar links, text links, images, and username tags. Many areas of the site require a username and password for full access; as such, the  username _testname_ and password _test#123_ have specifically been created for testing purposes; specifics around this access are tested below under [Authentication](#authentication). Note that the tests below require 'signed out' status unless otherwise specified.
-
-**Test**|**Ref(s)**|**Steps**|**Expected**|**Result**
------|:-----:|-----|-----|:-----:
-Home page displays when using URL|[2.1](README.md#milestone-2---frontend-navigation "set up ReactJS and its supporting libraries via the IDE and create an early deployment to Heroku in for frontend development to begin and to ensure all is working from the very start")<br>[2.2](README.md#milestone-2---frontend-navigation "As a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site")<br>[5.1](README.md#milestone-5---home--profile-pages "As a Site Visitor/User I want to view all user photos from the home page so I can see the latest content when first accessing the site")|<ol><li>Type https://moonshot-13d14b7a6fbd.herokuapp.com/ into the browser</li><li>Hit 'Enter'</li></ol>|Home page displays with navbar and page contents|Pass
-Home page displays when using navbar link|[2.2](README.md#milestone-2---frontend-navigation "As a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site")<br>[5.1](README.md#milestone-5---home--profile-pages "As a Site Visitor/User I want to view all user photos from the home page so I can see the latest content when first accessing the site")|<ol><li>Navigate to 'Sign Up' or 'Sign In' page</li><li>Click 'Home' in the navbar</li></ol>|Home page displays with navbar, and page contents|Pass
-Sign Up page displays when using navbar link|[2.2](README.md#milestone-2---frontend-navigation "As a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site")<br>[2.3](README.md#milestone-2---frontend-navigation "As a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site")|<ol><li>Navigate to 'Home' or 'Sign In' page</li><li>Click 'Sign Up' in the navbar</li></ol>|Sign Up page displays with navbar and relevant form|Pass
-Sign In page displays when using navbar link|[2.2](README.md#milestone-2---frontend-navigation "As a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site")<br>[2.4](README.md#milestone-2---frontend-navigation "As a Site User I want to easily access a sign in page so I can use the full functionality of the site")|<ol><li>Navigate to 'Home' or 'Sign Up' page</li><li>Click 'Sign In' in the navbar</li></ol>|Sign In page displays with navbar and relevant form|Pass
-Home page displays when clicking brand/logo|[2.2](README.md#milestone-2---frontend-navigation "As a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site")<br>[5.1](README.md#milestone-5---home--profile-pages "As a Site Visitor/User I want to view all user photos from the home page so I can see the latest content when first accessing the site")|<ol><li>Navigate to 'Sign In' or 'Sign Up' page</li><li>Click the brand/logo at the top-left of navbar</ol></li>|Home page displays with navbar and page contents|Pass
-Sign Up page displays when using 'sign up' link on signed-out home page|[2.3](README.md#milestone-2---frontend-navigation "As a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site")|<ol><li>Navigate to 'Home' page</li><li>Click 'sign up' link under welcome message</li></ol>|Sign Up page displays with navbar and relevant form|Pass
-Sign In page displays when using 'sign in' link on signed-out home page|[2.4](README.md#milestone-2---frontend-navigation "As a Site User I want to easily access a sign in page so I can use the full functionality of the site")|<ol><li>Navigate to 'Home' page</li><li>Click 'sign in' link under welcome message</li></ol>|Sign In page displays with navbar and relevant form|Pass
-Sign Up page displays when using 'Sign Up' link on Sign In page|[2.3](README.md#milestone-2---frontend-navigation "As a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site")|<ol><li>Navigate to 'Sign In' page</li><li>Click 'sign up' link below form</li></ol>|Sign Up page displays with navbar and relevant form|Pass
-Sign In page displays when using 'Sign In' link on Sign Up page|[2.4](README.md#milestone-2---frontend-navigation "As a Site User I want to easily access a sign in page so I can use the full functionality of the site")|<ol><li>Navigate to 'Sign Up' page</li><li>Click 'Sign In' link below form</li></ol>|Sign In page displays with navbar and relevant form|Pass
-Upload page displays when using navbar link|[2.2](README.md#milestone-2---frontend-navigation "As a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site")<br>[4.1](README.md#milestone-4---photo-uploads "As a Site User I want to be able to upload my own astrological photos to the site so that they are shared on the home page and commented on/upvoted by others")|<ol><li>If required, sign in using preregistered details e.g. username: testname, password: test#123</li><li>Navigate to 'Home' page</li><li>Click 'Upload+' in the navbar</li></ol>|Upload page displays with navbar and relevant form|Pass
-Profile page for signed-in user displays when using navbar link|[2.2](README.md#milestone-2---frontend-navigation "As a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site")<br>[5.5](README.md#milestone-5---home--profile-pages "As a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details")|<ol><li>If required, sign in using preregistered details e.g. username: testname, password: test#123</li><li>Navigate to 'Home' or 'Upload' page</li><li>Click 'Profile' in the navbar (under dropdown menu at top-right on larger screens)</li></ol>|Profile page displays with navbar, signed-in user details and page contents|Pass
-Gear page for signed-in user displays when using navbar link|[2.2](README.md#milestone-2---frontend-navigation "As a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site")<br>[5.5](README.md#milestone-5---home--profile-pages "As a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details")|<ol><li>If required, sign in using preregistered details e.g. username: testname, password: test#123</li><li>Navigate to 'Home' or 'Upload' page</li><li>Click 'Gear' in the navbar (under dropdown menu at top-right on larger screens)</li></ol>|Gear page displays with navbarand relevant form|Pass
-Account page for signed-in user displays when using navbar link|[2.2](README.md#milestone-2---frontend-navigation "As a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site")<br>[5.5](README.md#milestone-5---home--profile-pages "As a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details")|<ol><li>If required, sign in using preregistered details e.g. username: testname, password: test#123</li><li>Navigate to 'Home' or 'Upload' page</li><li>Click 'Account' in the navbar (under dropdown menu at top-right on larger screens)</li></ol>|Account page displays with navbar, signed-in user avatar and relevant form|Pass
-Home page displays when clicking 'Sign Out' navbar link|[2.2](README.md#milestone-2---frontend-navigation "As a Site Visitor/User I want access to navigation links at the top of every page so I can easily move between different areas of the site")<br>[3.1](README.md#milestone-3---user-access "As a Site Visitor/User I want have a clear indication as to whether or not I am logged in/logged out so I can easily discern if I need to sign up/sign in before accessing certain pages")<br>[3.4](README.md#milestone-3---user-access "As a Site User I want to be able to sign out from my account so that I know my account cannot be accessed by unauthorised persons")|<ol><li>If required, sign in using preregistered details e.g. username: testname, password: test#123</li><li>Click 'Sign Out' in the navbar</li></ol>|Home page displays with navbar, welcome message and page contents|Pass
-Photo detail page displays when clicking an image|[4.1](README.md#milestone-4---photo-uploads "As a Site User I want to be able to upload my own astrological photos to the site so that they are shared on the home page and commented on/upvoted by others")<br>[4.2](README.md#milestone-4---photo-uploads "As a Site User I want to include specific details such as keywords, date, time, location etc. with my uploaded photos so that those details can be displayed alongside the photo for the benefit of other users")<br>[5.4](README.md#milestone-4---photo-uploads "As a Site User I want to be able to select an individual photo from the feed so I can view details, comments, and upvotes directly associated with that photo")|<ol><li>Navigate to 'Home' page</li><li>Click on an image (not the star or username)</li></ol>|Photo detail page displays with relevant image|Pass
-Profile page for photo's owner displays when clicking username tag on image|[5.5](README.md#milestone-5---home--profile-pages "as a Site User I want to be able to access a personalised profile page so that I can add an avatar, personal bio and equipment details")|<ol><li>Navigate to 'Home' page</li><li>Click on a username tag at the top-right of an image (not the star or image itself)</li></ol>|Profile page displays with relevant user details and photos|Pass
-Photo detail page displays when clicking an image|[4.1](README.md#milestone-4---photo-uploads "As a Site User I want to be able to upload my own astrological photos to the site so that they are shared on the home page and commented on/upvoted by others")<br>[4.2](README.md#milestone-4---photo-uploads "As a Site User I want to include specific details such as keywords, date, time, location etc. with my uploaded photos so that those details can be displayed alongside the photo for the benefit of other users")<br>[5.4](README.md#milestone-4---photo-uploads "As a Site User I want to be able to select an individual photo from the feed so I can view details, comments, and upvotes directly associated with that photo")|<ol><li>Navigate to 'Home' page</li><li>Click on an image (not the star or username)</li></ol>|Photo detail page displays with relevant image|Pass
-Sign Up page displays when using 'sign up' link below image on Photo detail page|[2.3](README.md#milestone-2---frontend-navigation "As a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site")<br>[6.2](README.md#milestone-6---community-interaction "As a Site User I want to be able to comment on other users photos so that I can ask questions and/or start a discussion about the photo")|<ol><li>Navigate to 'Home' page</li><li>Click on an image showing more than '0' comments (not the star or username)</li><li>Click 'sign up' link below photo details</li></ol>|Sign Up page displays with navbar and relevant form|Pass
-Sign In page displays when using 'sign in' link below image on Photo detail page|[2.4](README.md#milestone-2---frontend-navigation "As a Site User I want to easily access a sign in page so I can use the full functionality of the site")<br>[6.2](README.md#milestone-6---community-interaction "As a Site User I want to be able to comment on other users photos so that I can ask questions and/or start a discussion about the photo")|<ol><li>Navigate to 'Home' page</li><li>Click on an image showing more than '0' comments (not the star or username)</li><li>Click 'sign in' link below photo details</li></ol>|Sign In page displays with navbar and relevant form|Pass
-Sign Up page displays when using 'Sign up' link below Comments heading on Photo detail page|[2.3](README.md#milestone-2---frontend-navigation "As a Site Visitor I want to easily access a sign up page so I can become a registered user and upload my own content/directly particpate with other users of the site")<br>[6.2](README.md#milestone-6---community-interaction "As a Site User I want to be able to comment on other users photos so that I can ask questions and/or start a discussion about the photo")|<ol><li>Navigate to 'Home' page</li><li>Click on an image showing '0' comments (not the star or username)</li><li>Click 'Sign up' link below Comments heading</li></ol>|Sign Up page displays with navbar and relevant form|Pass
-Sign In page displays when using 'sign in' link below Comments heading on Photo detail page|[2.4](README.md#milestone-2---frontend-navigation "As a Site User I want to easily access a sign in page so I can use the full functionality of the site")<br>[6.2](README.md#milestone-6---community-interaction "As a Site User I want to be able to comment on other users photos so that I can ask questions and/or start a discussion about the photo")|<ol><li>Navigate to 'Home' page</li><li>Click on an image showing '0' comments (not the star or username)</li><li>Click 'sign in' link below Comments heading</li></ol>|Sign In page displays with navbar and relevant form|Pass
-
-### Responsiveness
-
-These tests check that the site responds correctly at various sizes of screen, resizing, hiding, and reformatting elements where necessary. Many areas of the site require a username and password for full access; as such, the  username _testname_ and password _test#123_ have specifically been created for testing purposes; specifics around this access are tested below under [Authentication](#authentication). Note that the tests below require 'signed out' status unless otherwise specified.
-
-**Test**|**Steps**|**Expected**|**Result**
------|-----|-----|:-----:
-Navbar toggler, while signed out, appears on main pages at screen width of 767px or smaller|<ol><li>Navigate to 'Home' page</li><li>Reduce screen width to 767px or smaller</li></ol>|<ul><li>Navbar links no longer display in header</li><li>Toggler appears at right of navbar</li><li>'Home', 'Sign Up' and 'Sign In' display when toggler is clicked</li></ol>|Pass
-Navbar toggler, while signed in, appears at screen width of 767px or smaller|<ol><li>If required, sign in using preregistered details e.g. username: testname, password: test#123</li><li>Navigate to 'Home' page</li><li>Reduce screen width to 767px or smaller</li></ol>|<ul><li>Navbar links no longer display in header</li><li>Toggler appears at right of navbar</li><li>'Home', 'Upload', 'Profile', 'Gear' and 'Account' display when toggler is clicked</li></ol>|Pass
-Navbar, while signed in, adjusts avatar and username display at screen width of 767px and 315px or smaller|<ol><li>If required, sign in using preregistered details e.g. username: testname, password: test#123</li><li>Navigate to 'Home' page</li><li>Reduce screen width to 767px the 315px or smaller</li></ol>|<ul><li>Username dropdown is removed from navbar</li><li>Username appears beside 'Sign Out' link in toggled menu</li><li>Avatar is removed from navbar at 315px or smaller</li></ol>|Pass
-Home page, while signed-out, adjusts layout at screen width of 1200 px and 767px or smaller|<ol><li>Navigate to 'Home' page</li><li>Reduce screen width to 1200px, then 767px or smaller</li></ol>|<ul><li>Photo gallery adjusts from 3, to 2, to 1 column layout</li><li>Text and images resize to stay on screen</li></ul>|Pass
-Sign Up page adjusts layout across various sizes|<ol><li>Navigate to 'Sign Up' page</li><li>Reduce screen width to 1200px, then 767px or smaller</li></ol>|<ul><li>Form fields adjust width to remain on screen</li></ul>|Pass
-Sign In page adjusts layout across various sizes|<ol><li>Navigate to 'Sign In' page</li><li>Reduce screen width to 1200px, then 767px or smaller</li></ol>|<ul><li>Form fields adjust width to remain on screen</li></ul>|Pass
-Home page, while signed-in, adjusts layout at screen width of 1200 px and 767px or smaller|<ol><li>If required, sign in using preregistered details e.g. username: testname, password: test#123</li><li>Navigate to 'Home' page</li><li>Reduce screen width to 1200px, then 767px or smaller</li></ol>|<ul><li>Photo gallery adjusts from 3, to 2, to 1 column layout</li><li>Text, images, and filters resize/adjust layout to stay on screen</li></ul>|Pass
-Upload/Edit page adjusts layout at screen width of 767px and 575px or smaller|<ol><li>If required, sign in using preregistered details e.g. username: testname, password: test#123</li><li>Navigate to 'Upload' page</li><li>Reduce screen width to 767px, then 575px or smaller</li></ol>|<ul><li>Form adjusts from 2 to 1 column layout</li><li>Image placeholder and image preview resize to stay on screen</li><li>Date and Time fields adjust width to allow reading of values</li></ul>|Pass
-Photo detail page adjusts layout at screen width of 575px or smaller|<ol><li>If required, sign in using preregistered details e.g. username: testname, password: test#123</li><li>Navigate to 'Home' page</li><li>Click on an image with more than '0' comments (not the star or username)</li><li>Reduce screen width to 575px or smaller</li></ol>|<ul><li>Details below photo adjust from 2 to 1 column layout</li><li>Comments below photo adjust layout to keep content on screen</li</ul>|Pass
-Profile page adjusts layout at various screen width of 1200 px and 767px or smaller|<ol><li>If required, sign in using preregistered details e.g. username: testname, password: test#123</li><li>Navigate to 'Profile' page</li><li>Reduce screen width to 1200px, then 767px or smaller</li></ol>|<ul><li>Photo gallery adjusts from 3, to 2, to 1 column layout</li><li>Profile info adjusts from 2, to 1 column layout</li><li>Text and images resize to stay on screen</li></ul>|Pass
-Gear page adjusts layout at various screen widths|<ol><li>If required, sign in using preregistered details e.g. username: testname, password: test#123</li><li>Navigate to 'Gear' page</li><li>Reduce screen width to 1200px, 991px, then 767px or smaller</li></ol>|<ul><li>Form fields adjust width to remain on screen</li></ul>|Pass
-Account page adjusts layout at various screen widths|<ol><li>If required, sign in using preregistered details e.g. username: testname, password: test#123</li><li>Navigate to 'Account' page</li><li>Reduce screen width to 1200px, 991px, then 767px or smaller</li></ol>|<ul><li>Form fields adjust width to remain on screen</li></ul>|Pass
 
 ### Authentication
 
@@ -172,45 +121,30 @@ All of these tests are found within the [tests.py](booking_sys/tests.py) file in
 
 ![Automated](static/images/testing/testing-automated.png) -->
 
-## Validator Testing
+## PEP8 Validator Testing
 
-### W3C
-HTML copied from the page source of the deployed frontened has been passed through [W3C HTML Validator](https://validator.w3.org/) and shows 8 info comments regarding trailing slahes but no errors.
-
-All CSS files have been passed through Jigsaw, the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) and have also been found to be without any errors
-
-<!-- ### PEP8
-All Python files in the booking_sys and eaststreet apps, as well env.py and manage.py, have been passed through the [Code Institute PEP8 Linter](https://pep8ci.herokuapp.com/). The only warnings given were for the settings.py file which contains a small number of long lines (i.e. greater than 80 characters) under AUTH_PASSWORD_VALIDATORS; as this is code implemented by Django itself at setup, these lines will be left unchanged.  -->
-
-### Quick Lint JS
-JSX code and JavaScript files have been checked throughout this workspace with [Quick Lint JS](https://quick-lint-js.com/) and no issues have been found.
-
-## Accessibility & Performance
-
-[Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) was used to used to produce reports on performance and accessibility for both desktop and mobile versions of the site; results are provided in the table. In all cases the SEO score was 100 which was achieved after adding meta 'keyword' and 'description' tags to the index.html head section.
-
-| | |**Desktop**| | |**Mobile**| |
-:-----|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:
-**Page**|**Performance**|**Accessibility**|**Best Practices**|**Performance**|**Accessibility**|**Best Practices**
-**Home (signed-out)**|56|85|95|43|86|95
-**Sign Up**|99|93|95|90|93|95
-**Sign In**|99|94|95|91|94|95
-**Home (signed-in)**|25|85|95|49|91|91
-**Upload**|96|82|95|76|81|91
-**Photo Detail**|59|88|95|48|94|95
-**Profile**|82|83|95|67|89|95
-**Gear**|97|93|95|91|100|95
-**Account**|96|91|95|91|100|95
-**_Averages_**|**_79_**|**_88_**|**_95_**|**_71_**|**_92_**|**_94_**
-
-The performance on both desktop and mobile produced the lowest scores as longer loading times come from images loading on to the screen. In future development it would be advisable to look at quicker ways of retreiving image data in order to improve these scores.
+All files have been passed through the [Code Institute PEP8 Linter](https://pep8ci.herokuapp.com/). The only warnings given were for the settings.py file which contains a small number of long lines (i.e. greater than 80 characters) under AUTH_PASSWORD_VALIDATORS; as this is code implemented by Django itself at setup, these lines will be left unchanged. 
 
 ## Bugs
 
-There are no known bugs in the current deployment of the site. A number of bugs were found, added to the [Kanban workflow](https://github.com/users/ndsurgenor/projects/9), and corrected during development. A brief summary of the frontend bugs are provided below:
+There are no known bugs in the current deployment of the site. A number of bugs were found, added to the [Kanban workflow](https://github.com/users/ndsurgenor/projects/9), and corrected during development. A brief summary of the backend bugs are provided below:
 
 **Type**|**Issue**|**Detail**|**Solution**|**Result**
 -----|-----|-----|-----|:-----:
-Data|Photo Edit Form not applying updates|When the 'Save' button is clicked the page appears to be unresponsive. Accessing the console displays a number of errors regarding null vales and uncontrolled elements|<ul><li>Remove line const `photoInput = useRef(null);` from code</li><li>Remove all code related to this line</li></ul>|Fixed
-Data|Photo Card details in wrong format|On the Photo Detail page, the text under the image is displaying in the incorrect format for the Main Feature, Date, and Time labels|<ul><li>Main Feature: convert value to string and apply `toUpperCase()` and `slice()` as follows: `String(main_feature)[0].toUpperCase() + String(main_feature).slice(1)`</li><li>Date: install react-moment to apply dd-mm-yyyy format using package</li><li>Time: use react-moment to parse and apply HH;mm format</li></ul>|Fixed
-Structure|Nested link error|The PhotoCard component is producing a nested link error in the console because the link for user profile link has been placed inside the link for the Photo Detail page|<ul><li>Move owner link outside of image link and delete Image Overlay</li><li>Style component with negative margin to overlay on photo and prevent style errors</li></ul>|Fixed
+Data|Database won't migrate|After creating the Stars model and serializer, attempted to run migrations using `python manage.py makemigrations` and `python manage.py migrate`. Terminal displays a `UNIQUE constraint not valid` message.|<ul><li>Delete migrations</li><li>Delete and recode Stars app/model</li><li>Rerun migrations</li></ul>|Fixed
+Data|Photos POST function creating IntegrityError|When trying to create upload a photo using the POST function the message `django.db.utils.IntegrityError: NOT NULL constraint failed: photos_photo.user_id` appears|<ul><li>Correct syntax of `def perform_create()` method (incorrectly names as `def create_photo`)</li></ul>|Fixed
+Connection|API not accepting data from Frontend|When attempting to sign up a new user via the frontend, an error is logged to the console regarding blocked CORS policy and the React 'white screen' is shown|<ul><li>Added `CLIENT_ORIGIN` and `CLIENT_ORIGIN_DEV` variables to the env.py file</li><li>Added code block to settings.py (see under table)</li></ul>|Fixed
+Connection|API not sending `profile_id` and `profile_image` variables|When trying to display a user avatar and receive their id on the frontend, a broken image link is shown in the navbar along with an undefined value in developer tools|<ul><li>Removed underscore from `user_profile` and `equipment_profile`in all serializer files</li></ul>|Fixed
+Data|Photo Upload/Edit Form not saving details|Date and Time fields displaying errors within the frontend console with regard to null values|<ul><li>Removed `null="True"` on date and time fields in photos model</li><li>Added relevant defaults to date and time fields</li></ul>|Fixed
+
+``` python
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
+if 'CLIENT_ORIGIN_DEV' in os.environ:
+    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
+    ]
+```
